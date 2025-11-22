@@ -1,0 +1,580 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// AUTHENTICATION & USERS
+// ============================================
+
+model User {
+  id              String    @id @default(uuid())
+  email           String    @unique
+  passwordHash    String
+  role            Role
+  emailVerified   Boolean   @default(false)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  
+  family          Family?
+  carer           Carer?
+  sentMessages    Message[] @relation("SentMessages")
+  receivedMessages Message[] @relation("ReceivedMessages")
+  notifications   Notification[]
+}
+
+enum Role {
+  family
+  carer
+  admin
+}
+
+// ============================================
+// FAMILY SIDE
+// ============================================
+
+model Family {
+  id              String    @id @default(uuid())
+  userId          String    @unique
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  firstName       String
+  lastName        String
+  phone           String
+  address         String?
+  postcode        String
+  lat             Decimal?  @db.Decimal(10, 8)
+  lng             Decimal?  @db.Decimal(11, 8)
+  
+  recipients      CareRecipient[]
+  members         FamilyMember[]
+  careRequests    CareRequest[]
+  placements      CarePlacement[]
+  payments        Payment[]
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model FamilyMember {
+  id              String    @id @default(uuid())
+  familyId        String
+  family          Family    @relation(fields: [familyId], references: [id], onDelete: Cascade)
+  userId          String
+  role            MemberRole
+  
+  createdAt       DateTime  @default(now())
+}
+
+enum MemberRole {
+  primary
+  secondary
+  viewer
+}
+
+model CareRecipient {
+  id              String    @id @default(uuid())
+  familyId        String
+  family          Family    @relation(fields: [familyId], references: [id], onDelete: Cascade)
+  
+  firstName       String
+  lastName        String
+  age             Int
+  gender          Gender
+  recipientType   RecipientType
+  mobilityLevel   MobilityLevel
+  medicalConditions String?  @db.Text
+  specialRequirements String? @db.Text
+  
+  careRequests    CareRequest[]
+  placements      CarePlacement[]
+  healthRecords   HealthRecord[]
+  
+  createdAt       DateTime  @default(now())
+}
+
+enum Gender {
+  male
+  female
+  other
+}
+
+enum RecipientType {
+  elderly
+  child
+  adult
+}
+
+enum MobilityLevel {
+  independent
+  some_assistance
+  full_support
+}
+
+// ============================================
+// CARER SIDE
+// ============================================
+
+model Carer {
+  id              String    @id @default(uuid())
+  userId          String    @unique
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  firstName       String
+  lastName        String
+  phone           String
+  bio             String?   @db.Text
+  profilePhoto    String?
+  introVideo      String?
+  
+  yearsExperience Int
+  dbsVerified     Boolean   @default(false)
+  dbsCertificate  String?
+  dbsVerifiedAt   DateTime?
+  referencesVerified Boolean @default(false)
+  
+  address         String?
+  postcode        String
+  lat             Decimal?  @db.Decimal(10, 8)
+  lng             Decimal?  @db.Decimal(11, 8)
+  
+  status          CarerStatus @default(pending)
+  stripeAccountId String?
+  
+  specializations CarerSpecialization[]
+  rates           CarerRate[]
+  matches         Match[]
+  placements      CarePlacement[]
+  careLogs        CareLog[]
+  reviews         Review[]  @relation("CarerReviews")
+  payments        Payment[]
+  applications    CarerApplication[]
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+enum CarerStatus {
+  pending
+  approved
+  suspended
+  inactive
+}
+
+model CarerSpecialization {
+  id              String    @id @default(uuid())
+  carerId         String
+  carer           Carer     @relation(fields: [carerId], references: [id], onDelete: Cascade)
+  specialization  Specialization
+  
+  createdAt       DateTime  @default(now())
+  
+  @@unique([carerId, specialization])
+}
+
+enum Specialization {
+  elderly_care
+  dementia
+  mobility_support
+  post_surgery
+  palliative
+  special_needs
+  autism
+  learning_disabilities
+}
+
+model CarerRate {
+  id              String    @id @default(uuid())
+  carerId         String
+  carer           Carer     @relation(fields: [carerId], references: [id], onDelete: Cascade)
+  
+  careType        CareType
+  weeklyRate      Decimal?  @db.Decimal(10, 2)
+  hourlyRate      Decimal?  @db.Decimal(10, 2)
+  availableFrom   DateTime?
+  preferredRegions Json?
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  
+  @@unique([carerId, careType])
+}
+
+enum CareType {
+  live_in
+  hourly
+  respite
+  specialist
+}
+
+// ============================================
+// CARER APPLICATION TRACKING
+// ============================================
+
+model CarerApplication {
+  id              String    @id @default(uuid())
+  carerId         String
+  carer           Carer     @relation(fields: [carerId], references: [id], onDelete: Cascade)
+  careRequestId   String
+  careRequest     CareRequest @relation(fields: [careRequestId], references: [id], onDelete: Cascade)
+  
+  status          ApplicationStatus @default(applied)
+  appliedAt       DateTime  @default(now())
+  statusChangedAt DateTime  @updatedAt
+  
+  @@index([carerId, status])
+  @@index([careRequestId])
+}
+
+enum ApplicationStatus {
+  applied
+  reserved
+  accepted
+  unsuccessful
+}
+
+// ============================================
+// CARE REQUESTS & MATCHING
+// ============================================
+
+model CareRequest {
+  id              String    @id @default(uuid())
+  familyId        String
+  family          Family    @relation(fields: [familyId], references: [id], onDelete: Cascade)
+  recipientId     String
+  recipient       CareRecipient @relation(fields: [recipientId], references: [id], onDelete: Cascade)
+  
+  careType        CareType
+  scheduleType    ScheduleType
+  startDate       DateTime?
+  budgetMin       Decimal   @db.Decimal(10, 2)
+  budgetMax       Decimal   @db.Decimal(10, 2)
+  
+  status          RequestStatus @default(pending)
+  
+  matches         Match[]
+  applications    CarerApplication[]
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+enum ScheduleType {
+  full_time
+  part_time
+  temporary
+}
+
+enum RequestStatus {
+  pending
+  matching
+  matched
+  declined
+  completed
+}
+
+model Match {
+  id              String    @id @default(uuid())
+  careRequestId   String
+  careRequest     CareRequest @relation(fields: [careRequestId], references: [id], onDelete: Cascade)
+  carerId         String
+  carer           Carer     @relation(fields: [carerId], references: [id], onDelete: Cascade)
+  
+  matchScore      Int
+  status          MatchStatus @default(suggested)
+  
+  familyViewedAt  DateTime?
+  carerRespondedAt DateTime?
+  
+  messages        Message[]
+  placement       CarePlacement?
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  
+  @@index([careRequestId])
+  @@index([carerId])
+}
+
+enum MatchStatus {
+  suggested
+  family_interested
+  family_declined
+  carer_accepted
+  carer_declined
+  confirmed
+}
+
+// ============================================
+// MESSAGING (Multi-Tab Inbox)
+// ============================================
+
+model Message {
+  id              String    @id @default(uuid())
+  senderId        String
+  sender          User      @relation("SentMessages", fields: [senderId], references: [id], onDelete: Cascade)
+  recipientId     String
+  recipient       User      @relation("ReceivedMessages", fields: [recipientId], references: [id], onDelete: Cascade)
+  
+  matchId         String?
+  match           Match?    @relation(fields: [matchId], references: [id], onDelete: SetNull)
+  
+  messageType     MessageType @default(user_message)
+  
+  content         String    @db.Text
+  readAt          DateTime?
+  
+  createdAt       DateTime  @default(now())
+  
+  @@index([recipientId, readAt])
+  @@index([matchId])
+  @@index([messageType])
+}
+
+enum MessageType {
+  user_message
+  platform_message
+  notification
+}
+
+// ============================================
+// CARE PLACEMENTS & MANAGEMENT
+// ============================================
+
+model CarePlacement {
+  id              String    @id @default(uuid())
+  matchId         String    @unique
+  match           Match     @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  
+  familyId        String
+  family          Family    @relation(fields: [familyId], references: [id], onDelete: Cascade)
+  carerId         String
+  carer           Carer     @relation(fields: [carerId], references: [id], onDelete: Cascade)
+  recipientId     String
+  recipient       CareRecipient @relation(fields: [recipientId], references: [id], onDelete: Cascade)
+  
+  startDate       DateTime
+  endDate         DateTime?
+  weeklyRate      Decimal   @db.Decimal(10, 2)
+  
+  status          PlacementStatus @default(active)
+  
+  carePlan        CarePlan?
+  careLogs        CareLog[]
+  payments        Payment[]
+  reviews         Review[]
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+enum PlacementStatus {
+  active
+  paused
+  completed
+  cancelled
+}
+
+model CarePlan {
+  id              String    @id @default(uuid())
+  placementId     String    @unique
+  placement       CarePlacement @relation(fields: [placementId], references: [id], onDelete: Cascade)
+  
+  careGoals       Json
+  dailyRoutines   Json
+  medications     Json
+  dietaryRequirements String? @db.Text
+  emergencyContacts Json
+  
+  createdBy       String
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model CareLog {
+  id              String    @id @default(uuid())
+  placementId     String
+  placement       CarePlacement @relation(fields: [placementId], references: [id], onDelete: Cascade)
+  carerId         String
+  carer           Carer     @relation(fields: [carerId], references: [id], onDelete: Cascade)
+  
+  logDate         DateTime  @db.Date
+  activities      Json
+  meals           Json
+  medicationsGiven Json
+  mood            Mood
+  notes           String?   @db.Text
+  
+  createdAt       DateTime  @default(now())
+  
+  @@index([placementId, logDate])
+}
+
+enum Mood {
+  excellent
+  good
+  neutral
+  low
+  concerning
+}
+
+model HealthRecord {
+  id              String    @id @default(uuid())
+  recipientId     String
+  recipient       CareRecipient @relation(fields: [recipientId], references: [id], onDelete: Cascade)
+  recordedBy      String
+  
+  recordType      RecordType
+  data            Json
+  recordedAt      DateTime
+  
+  createdAt       DateTime  @default(now())
+  
+  @@index([recipientId, recordedAt])
+}
+
+enum RecordType {
+  vital_signs
+  weight
+  medication
+  incident
+  wellness
+}
+
+// ============================================
+// REVIEWS & RATINGS
+// ============================================
+
+model Review {
+  id              String    @id @default(uuid())
+  placementId     String
+  placement       CarePlacement @relation(fields: [placementId], references: [id], onDelete: Cascade)
+  
+  reviewerId      String
+  revieweeId      String
+  reviewee        Carer     @relation("CarerReviews", fields: [revieweeId], references: [id], onDelete: Cascade)
+  
+  rating          Int
+  communicationRating Int?
+  reliabilityRating Int?
+  professionalismRating Int?
+  comment         String?   @db.Text
+  
+  createdAt       DateTime  @default(now())
+  
+  @@index([revieweeId])
+}
+
+// ============================================
+// PAYMENTS
+// ============================================
+
+model Payment {
+  id              String    @id @default(uuid())
+  placementId     String
+  placement       CarePlacement @relation(fields: [placementId], references: [id], onDelete: Cascade)
+  familyId        String
+  family          Family    @relation(fields: [familyId], references: [id], onDelete: Cascade)
+  carerId         String
+  carer           Carer     @relation(fields: [carerId], references: [id], onDelete: Cascade)
+  
+  amount          Decimal   @db.Decimal(10, 2)
+  status          PaymentStatus @default(pending)
+  stripePaymentIntentId String?
+  
+  paymentDate     DateTime
+  periodStart     DateTime
+  periodEnd       DateTime
+  
+  createdAt       DateTime  @default(now())
+  
+  @@index([familyId])
+  @@index([carerId])
+}
+
+enum PaymentStatus {
+  pending
+  processing
+  completed
+  failed
+  refunded
+}
+
+// ============================================
+// NOTIFICATIONS
+// ============================================
+
+model Notification {
+  id              String    @id @default(uuid())
+  userId          String
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  type            NotificationType
+  title           String
+  content         String    @db.Text
+  link            String?
+  
+  readAt          DateTime?
+  
+  createdAt       DateTime  @default(now())
+  
+  @@index([userId, readAt])
+}
+
+enum NotificationType {
+  message
+  match
+  payment
+  care_log
+  system
+  application_update
+}
+
+// ============================================
+// CONTENT & RESOURCES
+// ============================================
+
+model Article {
+  id              String    @id @default(uuid())
+  title           String
+  slug            String    @unique
+  excerpt         String    @db.Text
+  content         String    @db.Text
+  featuredImage   String?
+  
+  category        ArticleCategory
+  tags            String[]
+  targetAudience  Audience[]
+  
+  author          String
+  publishedAt     DateTime?
+  
+  views           Int       @default(0)
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  
+  @@index([category, publishedAt])
+  @@index([publishedAt])
+}
+
+enum ArticleCategory {
+  care_guides
+  health_wellness
+  legal_financial
+  platform_updates
+  success_stories
+  carer_tips
+  family_advice
+}
+
+enum Audience {
+  families
+  carers
+  both
+}
