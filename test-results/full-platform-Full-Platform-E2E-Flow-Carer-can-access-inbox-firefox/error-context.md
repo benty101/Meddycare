@@ -1,0 +1,146 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [ref=e5]:
+    - generic [ref=e6]: "Limited Offer: Get 15% off your first month • Quality care from £950/week"
+    - generic [ref=e8]: "Limited Offer: Get 15% off your first month • Quality care from £950/week"
+    - generic [ref=e10]: "Limited Offer: Get 15% off your first month • Quality care from £950/week"
+    - generic [ref=e12]: "Limited Offer: Get 15% off your first month • Quality care from £950/week"
+  - banner [ref=e14]:
+    - generic [ref=e16]:
+      - link "MeddyCare Logo MeddyCare" [ref=e17] [cursor=pointer]:
+        - /url: /
+        - img "MeddyCare Logo" [ref=e18]
+        - generic [ref=e19]: MeddyCare
+      - navigation [ref=e20]:
+        - link "About us" [ref=e21] [cursor=pointer]:
+          - /url: /about
+        - link "For Families" [ref=e22] [cursor=pointer]:
+          - /url: /get-care
+        - link "Carer" [ref=e23] [cursor=pointer]:
+          - /url: /become-a-carer
+        - link "Insights & Advice" [ref=e24] [cursor=pointer]:
+          - /url: /blog
+      - generic [ref=e25]:
+        - link "Call us 0118 989 9970" [ref=e26] [cursor=pointer]:
+          - /url: tel:01189899970
+          - img [ref=e27]
+          - generic [ref=e29]:
+            - generic [ref=e30]: Call us
+            - generic [ref=e31]: 0118 989 9970
+        - link "Sign in" [ref=e32] [cursor=pointer]:
+          - /url: /login
+        - link "Find a Carer" [ref=e33] [cursor=pointer]:
+          - /url: /get-care
+  - main [ref=e34]:
+    - generic [ref=e35]:
+      - link "Back to selection" [ref=e36] [cursor=pointer]:
+        - /url: /login
+        - img [ref=e37]
+        - text: Back to selection
+      - generic [ref=e40]:
+        - heading "Carer Portal" [level=1] [ref=e41]
+        - paragraph [ref=e42]: Sign in to manage your schedule, view placements, and update your profile.
+      - generic [ref=e43]:
+        - generic [ref=e44]:
+          - generic [ref=e45]:
+            - text: Email Address
+            - generic [ref=e46]:
+              - generic:
+                - img
+              - textbox "Email Address" [ref=e47]:
+                - /placeholder: you@example.com
+                - text: carer@test.com
+          - generic [ref=e48]:
+            - text: Password
+            - generic [ref=e49]:
+              - generic:
+                - img
+              - textbox "Password" [ref=e50]:
+                - /placeholder: ••••••••
+                - text: password123
+              - button [ref=e51]:
+                - img [ref=e52]
+          - generic [ref=e55]:
+            - generic [ref=e56]:
+              - checkbox "Remember me" [ref=e57]
+              - generic [ref=e58]: Remember me
+            - link "Forgot password?" [ref=e59] [cursor=pointer]:
+              - /url: /forgot-password
+          - button "Sign In" [active] [ref=e60]
+          - generic [ref=e65]: Or continue with
+          - generic [ref=e66]:
+            - button "Google" [ref=e67]:
+              - img [ref=e68]
+              - text: Google
+            - button "Facebook" [ref=e73]:
+              - img [ref=e74]
+              - text: Facebook
+        - paragraph [ref=e77]:
+          - text: Don't have an account?
+          - link "Apply Now" [ref=e78] [cursor=pointer]:
+            - /url: /become-a-carer
+  - contentinfo [ref=e79]:
+    - generic [ref=e80]:
+      - generic [ref=e81]:
+        - generic [ref=e82]:
+          - link "MeddyCare Logo MeddyCare" [ref=e83] [cursor=pointer]:
+            - /url: /
+            - img "MeddyCare Logo" [ref=e84]
+            - generic [ref=e85]: MeddyCare
+          - generic [ref=e86]:
+            - heading "Legal" [level=3] [ref=e87]
+            - paragraph [ref=e88]: MeddyCare is an introductory agency connecting families with self-employed carers. We are not CQC regulated as we do not provide care directly.
+        - generic [ref=e89]:
+          - heading "Company" [level=3] [ref=e90]
+          - list [ref=e91]:
+            - listitem [ref=e92]:
+              - link "About Us" [ref=e93] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e94]:
+              - link "For Families" [ref=e95] [cursor=pointer]:
+                - /url: /get-care
+            - listitem [ref=e96]:
+              - link "Carer" [ref=e97] [cursor=pointer]:
+                - /url: /become-a-carer
+            - listitem [ref=e98]:
+              - link "Contact Us" [ref=e99] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=e100]:
+              - link "Insights & Advice" [ref=e101] [cursor=pointer]:
+                - /url: /blog
+        - generic [ref=e102]:
+          - heading "Our Office" [level=3] [ref=e103]
+          - generic [ref=e104]:
+            - generic [ref=e105]:
+              - img [ref=e106]
+              - generic [ref=e108]: Monday to Sunday (Open 24/7)
+            - generic [ref=e109]:
+              - img [ref=e110]
+              - generic [ref=e112]: 5917 Rowsgate Ln Wilmington, NC 28411,
+            - generic [ref=e113]:
+              - img [ref=e114]
+              - generic [ref=e116]: 0118 989 9970
+            - generic [ref=e117]:
+              - img [ref=e118]
+              - generic [ref=e120]: hello@meddycare.com
+        - generic [ref=e121]:
+          - heading "Get Our Daily Newsletter" [level=3] [ref=e122]
+          - generic [ref=e123]:
+            - textbox "Enter your email" [ref=e124]
+            - button "Subscribe" [ref=e125]
+          - generic [ref=e126]:
+            - heading "Our awards" [level=4] [ref=e127]
+            - img "Awards and certifications" [ref=e128]
+      - generic [ref=e130]:
+        - generic [ref=e131]:
+          - link "Terms And Condition" [ref=e132] [cursor=pointer]:
+            - /url: /terms
+          - link "Customer Privacy Policy" [ref=e133] [cursor=pointer]:
+            - /url: /privacy
+        - paragraph [ref=e134]: © Copyright meddycare 2025
+  - button "Open Next.js Dev Tools" [ref=e140] [cursor=pointer]:
+    - img [ref=e141]
+  - alert [ref=e145]
+```

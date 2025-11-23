@@ -14,6 +14,9 @@ import YouTubeIcon from '@/src/components/icons/YouTubeIcon';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Star, Sparkles, Phone } from 'lucide-react';
 import { TestimonialCard } from '@/components/ui/testimonial-card';
+import { FadeIn } from '@/components/animations/FadeIn';
+import { ScaleIn } from '@/components/animations/ScaleIn';
+import { SlideIn } from '@/components/animations/SlideIn';
 
 export default function Home() {
   const testimonials = [
@@ -76,7 +79,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Left Content */}
-              <div className="space-y-8 animate-fade-in">
+              <FadeIn className="space-y-8">
                 <div className="inline-block">
                   <span className="badge-primary">
                     Caring for Every Golden Year
@@ -88,7 +91,7 @@ export default function Home() {
                 </h1>
 
                 <p className="body-xl text-(--text-secondary) max-w-xl">
-                  We have connected over 5,000 families with professional, self-employed carers across the UK. 
+                  We have connected over 5,000 families with professional, self-employed carers across the UK.
                   Share your needs, explore your options, and choose the right carer for your loved one.
                 </p>
 
@@ -115,10 +118,10 @@ export default function Home() {
                     </span>
                   </div>
                 </div>
-              </div>
+              </FadeIn>
 
               {/* Right Image Collage */}
-              <div className="relative h-[600px]">
+              <ScaleIn className="relative h-[600px]" delay={0.2}>
                 {/* Decorative arrows */}
                 <svg className="absolute top-8 right-32 w-32 h-32 text-(--accent-pink) opacity-60" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="3">
                   <path d="M20,80 Q50,20 80,60" />
@@ -137,6 +140,8 @@ export default function Home() {
                     fill
                     className="object-cover"
                     style={{ backgroundColor: '#262626' }}
+                    sizes="(max-width: 768px) 100vw, 384px"
+                    priority
                   />
                 </div>
 
@@ -148,6 +153,8 @@ export default function Home() {
                     fill
                     className="object-cover"
                     style={{ backgroundColor: '#564B37' }}
+                    sizes="(max-width: 768px) 100vw, 192px"
+                    priority
                   />
                 </div>
 
@@ -159,9 +166,11 @@ export default function Home() {
                     fill
                     className="object-cover"
                     style={{ backgroundColor: '#262626' }}
+                    sizes="(max-width: 768px) 100vw, 256px"
+                    priority
                   />
                 </div>
-              </div>
+              </ScaleIn>
             </div>
           </div>
         </section>
@@ -204,7 +213,7 @@ export default function Home() {
 
             <div className="grid md:grid-cols-3 gap-8">
               {/* Card 1 */}
-              <div className="card-elevated space-y-6 bg-gradient-to-br from-white to-(--bg-purple-light)">
+              <ScaleIn delay={0.1} className="card-elevated space-y-6 bg-gradient-to-br from-white to-(--bg-purple-light)">
                 <div className="w-14 h-14 rounded-2xl bg-(--brand-purple) flex items-center justify-center">
                   <CheckCircleIcon width={32} height={32} color="white" />
                 </div>
@@ -213,10 +222,10 @@ export default function Home() {
                   All our carers are thoroughly vetted and DBS checked, ensuring safety and peace of mind for you
                   and your loved ones.
                 </p>
-              </div>
+              </ScaleIn>
 
               {/* Card 2 */}
-              <div className="card-elevated space-y-6">
+              <ScaleIn delay={0.2} className="card-elevated space-y-6">
                 <div className="w-14 h-14 rounded-2xl bg-(--accent-success) flex items-center justify-center">
                   <CheckCircleIcon width={32} height={32} color="white" />
                 </div>
@@ -225,10 +234,10 @@ export default function Home() {
                   We carefully verify every carer before connecting them with you. This ensures you get reliable,
                   safe, and professional support.
                 </p>
-              </div>
+              </ScaleIn>
 
               {/* Card 3 */}
-              <div className="card-elevated space-y-6 bg-gradient-to-br from-white to-(--bg-purple-light)">
+              <ScaleIn delay={0.3} className="card-elevated space-y-6 bg-gradient-to-br from-white to-(--bg-purple-light)">
                 <div className="w-14 h-14 rounded-2xl bg-(--brand-purple) flex items-center justify-center">
                   <TrendingUpIcon width={32} height={32} color="white" />
                 </div>
@@ -237,7 +246,7 @@ export default function Home() {
                   Each carer sets their own rates, giving you the freedom to find the right match for your care
                   needs and budget.
                 </p>
-              </div>
+              </ScaleIn>
             </div>
           </div>
         </section>
@@ -254,6 +263,7 @@ export default function Home() {
                   width={623}
                   height={650}
                   className="w-full h-auto"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
 
@@ -335,7 +345,9 @@ export default function Home() {
 
             <div className="grid md:grid-cols-3 gap-8">
               {testimonials.map((testimonial, i) => (
-                <TestimonialCard key={i} {...testimonial} />
+                <SlideIn key={i} delay={i * 0.1} direction="up">
+                  <TestimonialCard {...testimonial} />
+                </SlideIn>
               ))}
             </div>
 
@@ -404,7 +416,7 @@ export default function Home() {
             <div className="absolute bottom-10 right-10 w-40 h-40 bg-white rounded-full blur-3xl animate-pulse"></div>
           </div>
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <ScaleIn className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center space-y-6">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
                 <Sparkles className="w-5 h-5 text-yellow-300" />
@@ -445,7 +457,7 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-          </div>
+          </ScaleIn>
         </section>
 
         {/* Services Section */}
@@ -475,6 +487,7 @@ export default function Home() {
                     width={400}
                     height={400}
                     className="w-full h-auto group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
                 <div className="space-y-3">
@@ -503,6 +516,7 @@ export default function Home() {
                     width={400}
                     height={400}
                     className="w-full h-auto group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
                 <div className="space-y-3">
@@ -531,6 +545,7 @@ export default function Home() {
                     width={400}
                     height={400}
                     className="w-full h-auto group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
                 <div className="space-y-3">
@@ -657,6 +672,7 @@ export default function Home() {
               alt="Care background"
               fill
               className="object-cover"
+              sizes="100vw"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-(--brand-purple-dark)/80 via-(--brand-purple)/90 to-(--brand-purple-dark)"></div>
           </div>

@@ -23,6 +23,8 @@ export default {
         urbanist: ["var(--font-urbanist)", "sans-serif"],
         sora: ["var(--font-sora)", "sans-serif"],
         inter: ["var(--font-inter)", "sans-serif"],
+        fraunces: ["var(--font-fraunces)", "serif"],
+        playfair: ["var(--font-playfair)", "serif"],
       },
       boxShadow: {
         'soft': '0 2px 8px rgba(0, 0, 0, 0.04)',

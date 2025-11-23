@@ -3,140 +3,194 @@
 ```yaml
 - generic [active] [ref=e1]:
   - generic [ref=e2]:
-    - generic [ref=e5]:
-      - generic [ref=e6]: 15% off on your first service
-      - generic [ref=e7]: 15% off on your first service
-      - generic [ref=e8]: 15% off on your first service
-      - generic [ref=e9]: 15% off on your first service
-    - banner [ref=e10]:
-      - generic [ref=e12]:
-        - link "MeddyCare Logo MeddyCare" [ref=e13] [cursor=pointer]:
+    - generic [ref=e6]:
+      - generic [ref=e7]: "Limited Offer: Get 15% off your first month • Quality care from £950/week"
+      - generic [ref=e9]: "Limited Offer: Get 15% off your first month • Quality care from £950/week"
+      - generic [ref=e11]: "Limited Offer: Get 15% off your first month • Quality care from £950/week"
+      - generic [ref=e13]: "Limited Offer: Get 15% off your first month • Quality care from £950/week"
+    - banner [ref=e15]:
+      - generic [ref=e17]:
+        - link "MeddyCare Logo MeddyCare" [ref=e18] [cursor=pointer]:
           - /url: /
-          - img "MeddyCare Logo" [ref=e14]
-          - generic [ref=e15]: MeddyCare
-        - navigation [ref=e16]:
-          - link "About us" [ref=e17] [cursor=pointer]:
+          - img "MeddyCare Logo" [ref=e19]
+          - generic [ref=e20]: MeddyCare
+        - navigation [ref=e21]:
+          - link "About us" [ref=e22] [cursor=pointer]:
             - /url: /about
-          - link "For Families" [ref=e18] [cursor=pointer]:
+          - link "For Families" [ref=e23] [cursor=pointer]:
             - /url: /get-care
-          - link "Carer" [ref=e19] [cursor=pointer]:
+          - link "Carer" [ref=e24] [cursor=pointer]:
             - /url: /become-a-carer
-          - link "Insights & Advice" [ref=e20] [cursor=pointer]:
+          - link "Insights & Advice" [ref=e25] [cursor=pointer]:
             - /url: /blog
-        - generic [ref=e21]:
-          - link "Log in" [ref=e22] [cursor=pointer]:
+        - generic [ref=e26]:
+          - link "Call us 0118 989 9970" [ref=e27] [cursor=pointer]:
+            - /url: tel:01189899970
+            - img [ref=e28]
+            - generic [ref=e30]:
+              - generic [ref=e31]: Call us
+              - generic [ref=e32]: 0118 989 9970
+          - link "Sign in" [ref=e33] [cursor=pointer]:
             - /url: /login
-          - link "Contact Us" [ref=e23] [cursor=pointer]:
-            - /url: /contact
-    - main [ref=e24]:
-      - generic [ref=e25]:
-        - heading "Join Our Care Team" [level=1] [ref=e26]
-        - paragraph [ref=e27]: Earn up to £900/week with flexible hours. We're looking for compassionate carers to join our growing community.
-      - generic [ref=e28]:
-        - generic [ref=e30]:
-          - generic [ref=e32]:
-            - img [ref=e34]
-            - generic [ref=e37]: About You
-          - generic [ref=e38]:
-            - img [ref=e40]
-            - generic [ref=e43]: Experience
-          - generic [ref=e44]:
-            - img [ref=e46]
-            - generic [ref=e49]: Skills
+          - link "Find a Carer" [ref=e34] [cursor=pointer]:
+            - /url: /get-care
+    - main [ref=e35]:
+      - generic [ref=e36]:
+        - img "Carer smiling with senior" [ref=e38]
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - img [ref=e42]
+            - generic [ref=e44]: "Join the UK's #1 Carer Community"
+          - heading "Do the work you love, on your own terms." [level=1] [ref=e45]:
+            - text: Do the work you love,
+            - text: on your own terms.
+          - paragraph [ref=e46]: Earn up to £900/week with live-in care. We handle the paperwork, insurance, and finding clients—you focus on what matters most.
+          - generic [ref=e47]:
+            - link "Start Application" [ref=e48] [cursor=pointer]:
+              - /url: /carers/questionnaire
+            - link "Browse Jobs" [ref=e49] [cursor=pointer]:
+              - /url: /jobs
           - generic [ref=e50]:
-            - img [ref=e52]
-            - generic [ref=e55]: Profile
-        - generic [ref=e57]:
-          - generic [ref=e58]:
-            - heading "Personal Details" [level=2] [ref=e59]
-            - generic [ref=e60]:
-              - generic [ref=e61]:
-                - generic [ref=e62]: First Name
-                - textbox "e.g. Sarah" [ref=e63]
-              - generic [ref=e64]:
-                - generic [ref=e65]: Last Name
-                - textbox "e.g. Mitchell" [ref=e66]
-            - generic [ref=e67]:
-              - generic [ref=e68]: Email Address
-              - textbox "e.g. sarah@example.com" [ref=e69]
-            - generic [ref=e70]:
-              - generic [ref=e71]: Create Password
-              - textbox "Min. 8 characters" [ref=e72]
-            - generic [ref=e73]:
-              - generic [ref=e74]: Phone Number
-              - textbox "e.g. 07700 900000" [ref=e75]
-            - generic [ref=e76]:
-              - generic [ref=e77]: Postcode
-              - textbox "e.g. SW1A 1AA" [ref=e78]
-          - generic [ref=e80]:
-            - generic [ref=e81]:
-              - img [ref=e82]
-              - heading "Join MeddyCare" [level=4] [ref=e86]
-            - paragraph [ref=e87]: We're looking for experienced, compassionate carers who want to make a real difference. You'll need the right to work in the UK and a clean DBS check.
-        - generic [ref=e88]:
-          - button "Back" [disabled] [ref=e89]:
-            - img [ref=e90]
-            - text: Back
-          - button "Next Step" [ref=e92]:
-            - text: Next Step
-            - img [ref=e93]
-    - contentinfo [ref=e95]:
-      - generic [ref=e96]:
-        - generic [ref=e97]:
+            - generic [ref=e51]:
+              - img [ref=e52]
+              - generic [ref=e55]: Fully Insured
+            - generic [ref=e56]:
+              - img [ref=e57]
+              - generic [ref=e62]: Weekly Pay
+            - generic [ref=e63]:
+              - img [ref=e64]
+              - generic [ref=e69]: 24/7 Support
+      - generic [ref=e71]:
+        - generic [ref=e72]:
+          - heading "Why carers choose MeddyCare" [level=2] [ref=e73]
+          - paragraph [ref=e74]: We're building a platform that puts you first, with better pay, more flexibility, and real support.
+        - generic [ref=e75]:
+          - generic [ref=e78]:
+            - img [ref=e80]
+            - heading "Earn more, keep more." [level=3] [ref=e85]
+            - paragraph [ref=e86]: Set your own rates and keep 85% of your earnings. Our carers earn an average of 30% more than with traditional agencies.
+          - generic [ref=e89]:
+            - img [ref=e91]
+            - heading "Total Freedom" [level=3] [ref=e96]
+            - paragraph [ref=e97]: Work when you want, where you want. No minimum hours, no forced shifts. You're in control.
           - generic [ref=e98]:
-            - link "MeddyCare Logo MeddyCare" [ref=e99] [cursor=pointer]:
+            - img [ref=e100]
+            - heading "Clinical Support" [level=3] [ref=e102]
+            - paragraph [ref=e103]: Access to our clinical lead nurse for advice on complex care needs. We've got your back, 24/7.
+          - generic [ref=e104]:
+            - img "Training" [ref=e106]
+            - generic [ref=e108]:
+              - img [ref=e110]
+              - heading "Grow your career" [level=3] [ref=e112]
+              - paragraph [ref=e113]: Free access to CPD-accredited training courses. Upskill in dementia care, palliative care, and more to increase your earning potential.
+      - generic [ref=e116]:
+        - generic [ref=e117]:
+          - img "Carer life" [ref=e119]
+          - generic [ref=e122]:
+            - generic [ref=e123]:
+              - img [ref=e124]
+              - img [ref=e126]
+              - img [ref=e128]
+              - img [ref=e130]
+              - img [ref=e132]
+            - paragraph [ref=e134]: "\"I've never felt more supported. The app makes everything so easy.\""
+            - paragraph [ref=e135]: — Sarah, London
+        - generic [ref=e136]:
+          - heading "More than just a job. It's a calling." [level=2] [ref=e137]:
+            - text: More than just a job.
+            - text: It's a calling.
+          - generic [ref=e138]:
+            - paragraph [ref=e139]: Being a live-in carer is a unique opportunity to make a profound difference in someone's life. You become a companion, a supporter, and a friend.
+            - paragraph [ref=e140]: With MeddyCare, you're not just an employee number. You're a valued professional. We provide the platform, the safety net, and the community—so you can focus on delivering exceptional care.
+          - link "Read carer stories" [ref=e142] [cursor=pointer]:
+            - /url: /carers/questionnaire
+            - text: Read carer stories
+            - img [ref=e143]
+      - generic [ref=e147]:
+        - generic [ref=e148]:
+          - heading "Start your journey" [level=2] [ref=e149]
+          - paragraph [ref=e150]: From application to your first placement in 3 steps.
+        - generic [ref=e151]:
+          - generic [ref=e153]:
+            - img [ref=e155]
+            - heading "Create Profile" [level=3] [ref=e160]
+            - paragraph [ref=e161]: Sign up and tell us about your experience, skills, and preferences.
+          - generic [ref=e162]:
+            - img [ref=e164]
+            - heading "Get Verified" [level=3] [ref=e167]
+            - paragraph [ref=e168]: Complete our online vetting process, including DBS and reference checks.
+          - generic [ref=e169]:
+            - img [ref=e171]
+            - heading "Start Caring" [level=3] [ref=e173]
+            - paragraph [ref=e174]: Browse matched placements, chat with families, and accept jobs.
+      - generic [ref=e177]:
+        - heading "Ready to join the team?" [level=2] [ref=e178]
+        - paragraph [ref=e179]: Thousands of families are looking for a carer just like you.
+        - generic [ref=e180]:
+          - link "Apply Now" [ref=e181] [cursor=pointer]:
+            - /url: /carers/questionnaire
+          - link "View Open Jobs" [ref=e182] [cursor=pointer]:
+            - /url: /jobs
+    - contentinfo [ref=e183]:
+      - generic [ref=e184]:
+        - generic [ref=e185]:
+          - generic [ref=e186]:
+            - link "MeddyCare Logo MeddyCare" [ref=e187] [cursor=pointer]:
               - /url: /
-              - img "MeddyCare Logo" [ref=e100]
-              - generic [ref=e101]: MeddyCare
-            - generic [ref=e102]:
-              - heading "Legal" [level=3] [ref=e103]
-              - paragraph [ref=e104]: According to the Care Quality Commission (CQC), under the Health & Social Care Act 2008, companies like Meddycare are classified as introductory agencies.
-          - generic [ref=e105]:
-            - heading "Company" [level=3] [ref=e106]
-            - list [ref=e107]:
-              - listitem [ref=e108]:
-                - link "About Us" [ref=e109] [cursor=pointer]:
+              - img "MeddyCare Logo" [ref=e188]
+              - generic [ref=e189]: MeddyCare
+            - generic [ref=e190]:
+              - heading "Legal" [level=3] [ref=e191]
+              - paragraph [ref=e192]: MeddyCare is an introductory agency connecting families with self-employed carers. We are not CQC regulated as we do not provide care directly.
+          - generic [ref=e193]:
+            - heading "Company" [level=3] [ref=e194]
+            - list [ref=e195]:
+              - listitem [ref=e196]:
+                - link "About Us" [ref=e197] [cursor=pointer]:
                   - /url: /about
-              - listitem [ref=e110]:
-                - link "For Families" [ref=e111] [cursor=pointer]:
+              - listitem [ref=e198]:
+                - link "For Families" [ref=e199] [cursor=pointer]:
                   - /url: /get-care
-              - listitem [ref=e112]:
-                - link "Carer" [ref=e113] [cursor=pointer]:
+              - listitem [ref=e200]:
+                - link "Carer" [ref=e201] [cursor=pointer]:
                   - /url: /become-a-carer
-              - listitem [ref=e114]:
-                - link "Insights & Advice" [ref=e115] [cursor=pointer]:
+              - listitem [ref=e202]:
+                - link "Contact Us" [ref=e203] [cursor=pointer]:
+                  - /url: /contact
+              - listitem [ref=e204]:
+                - link "Insights & Advice" [ref=e205] [cursor=pointer]:
                   - /url: /blog
-          - generic [ref=e116]:
-            - heading "Our Office" [level=3] [ref=e117]
-            - generic [ref=e118]:
-              - generic [ref=e119]:
-                - img [ref=e120]
-                - generic [ref=e122]: Monday to Sunday (Open 24/7)
-              - generic [ref=e123]:
-                - img [ref=e124]
-                - generic [ref=e126]: 5917 Rowsgate Ln Wilmington, NC 28411,
-              - generic [ref=e127]:
-                - img [ref=e128]
-                - generic [ref=e130]: (215) 424-7763
-              - generic [ref=e131]:
-                - img [ref=e132]
-                - generic [ref=e134]: hello@meddycare.com
-          - generic [ref=e135]:
-            - heading "Get Our Daily Newsletter" [level=3] [ref=e136]
-            - generic [ref=e137]:
-              - textbox "Enter your email" [ref=e138]
-              - button "Subscribe" [ref=e139]
-            - generic [ref=e140]:
-              - heading "Our awards" [level=4] [ref=e141]
-              - img "Awards and certifications" [ref=e142]
-        - generic [ref=e144]:
-          - generic [ref=e145]:
-            - link "Terms And Condition" [ref=e146] [cursor=pointer]:
+          - generic [ref=e206]:
+            - heading "Our Office" [level=3] [ref=e207]
+            - generic [ref=e208]:
+              - generic [ref=e209]:
+                - img [ref=e210]
+                - generic [ref=e212]: Monday to Sunday (Open 24/7)
+              - generic [ref=e213]:
+                - img [ref=e214]
+                - generic [ref=e216]: 5917 Rowsgate Ln Wilmington, NC 28411,
+              - generic [ref=e217]:
+                - img [ref=e218]
+                - generic [ref=e220]: 0118 989 9970
+              - generic [ref=e221]:
+                - img [ref=e222]
+                - generic [ref=e224]: hello@meddycare.com
+          - generic [ref=e225]:
+            - heading "Get Our Daily Newsletter" [level=3] [ref=e226]
+            - generic [ref=e227]:
+              - textbox "Enter your email" [ref=e228]
+              - button "Subscribe" [ref=e229]
+            - generic [ref=e230]:
+              - heading "Our awards" [level=4] [ref=e231]
+              - img "Awards and certifications" [ref=e232]
+        - generic [ref=e234]:
+          - generic [ref=e235]:
+            - link "Terms And Condition" [ref=e236] [cursor=pointer]:
               - /url: /terms
-            - link "Customer Privacy Policy" [ref=e147] [cursor=pointer]:
+            - link "Customer Privacy Policy" [ref=e237] [cursor=pointer]:
               - /url: /privacy
-          - paragraph [ref=e148]: © Copyright meddycare 2025
-  - button "Open Next.js Dev Tools" [ref=e154] [cursor=pointer]:
-    - img [ref=e155]
-  - alert [ref=e159]
+          - paragraph [ref=e238]: © Copyright meddycare 2025
+  - button "Open Next.js Dev Tools" [ref=e244] [cursor=pointer]:
+    - img [ref=e245]
+  - alert [ref=e249]
 ```

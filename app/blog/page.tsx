@@ -2,326 +2,237 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Calendar, Clock, ArrowRight, Search } from 'lucide-react';
+import { Calendar, User, ArrowRight, Tag } from 'lucide-react';
+import type { Metadata } from 'next';
 
-export default function BlogIndex() {
-    const recentPosts = [
-        { 
-            title: '£600 million budget boost to social care', 
-            date: '12 August 2024',
-            image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=300&fit=crop'
-        },
-        { 
-            title: 'Arranging care after a hospital discharge', 
-            date: '10 August 2024',
-            image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&h=300&fit=crop'
-        },
-        { 
-            title: 'Spotting the symptoms of loneliness in old age', 
-            date: '8 August 2024',
-            image: 'https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?w=400&h=300&fit=crop'
-        },
-        { 
-            title: 'Understanding dementia care at home', 
-            date: '5 August 2024',
-            image: 'https://images.unsplash.com/photo-1516307365426-bea591f05011?w=400&h=300&fit=crop'
-        },
-    ];
+export const metadata: Metadata = {
+    title: "Care Insights & Advice - MeddyCare Blog",
+    description: "Expert advice, guides, and stories about live-in care, dementia support, and elderly health.",
+};
 
-    const tags = [
-        'Live-in Care', 'Dementia', 'Elderly Care', 'Health', 'Family Support',
-        'Nutrition', 'Mental Health', 'Mobility', 'Medication', 'Safety',
-        'Financial Planning', 'Legal Advice', 'Respite Care', 'End of Life'
-    ];
-
-    const featuredPost = {
-        title: 'What Is Live-in Care and How Does It Work?',
-        excerpt: 'Discover how live-in care works, its benefits, and what to expect when choosing home-based support for your loved ones. Learn about costs, finding the right carer, and making the transition smooth.',
-        category: 'Understanding Live-in Care',
-        readTime: '8 min read',
-        date: '15 Aug, 2024',
-        author: 'Dr. Sarah Mitchell',
-        authorRole: 'Senior Care Advisor',
-        image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=500&fit=crop'
-    };
-
-    const blogPosts = [
+export default function BlogPage() {
+    const posts = [
         {
-            title: 'The Benefits of Staying at Home vs. Moving into a Care Home',
-            excerpt: 'Staying at home gives you independence and control over your daily life. Explore the emotional, financial, and health benefits of choosing live-in care.',
-            category: 'Care Options',
-            readTime: '7 min read',
-            date: '14 Aug, 2024',
-            author: 'Emily Roberts',
-            image: 'https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?w=600&h=400&fit=crop'
+            id: 1,
+            title: "Understanding the Stages of Dementia",
+            excerpt: "A comprehensive guide to recognizing the early signs of dementia and how care needs evolve over time.",
+            category: "Dementia Care",
+            author: "Dr. Sarah Miller",
+            date: "Nov 20, 2024",
+            image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop",
+            readTime: "8 min read"
         },
         {
-            title: 'How to Choose the Right Live-in Carer for Your Loved One',
-            excerpt: 'Finding the right caregiver is about more than qualifications. Learn what questions to ask and how to ensure personality compatibility.',
-            category: 'Carer Selection',
-            readTime: '6 min read',
-            date: '12 Aug, 2024',
-            author: 'James Thompson',
-            image: 'https://images.unsplash.com/photo-1516307365426-bea591f05011?w=600&h=400&fit=crop'
+            id: 2,
+            title: "Live-in Care vs. Care Homes: Making the Right Choice",
+            excerpt: "Comparing the costs, benefits, and lifestyle differences to help you make an informed decision for your loved one.",
+            category: "Care Guides",
+            author: "James Wilson",
+            date: "Nov 18, 2024",
+            image: "https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?q=80&w=2070&auto=format&fit=crop",
+            readTime: "6 min read"
         },
         {
-            title: 'Understanding the Costs of Live-in Care in 2024',
-            excerpt: 'A comprehensive breakdown of live-in care costs, funding options, and how to budget for quality care at home.',
-            category: 'Financial Planning',
-            readTime: '10 min read',
-            date: '10 Aug, 2024',
-            author: 'Dr. Sarah Mitchell',
-            image: 'https://images.unsplash.com/photo-1554224311-beee415c201f?w=600&h=400&fit=crop'
+            id: 3,
+            title: "5 Tips for Preventing Falls at Home",
+            excerpt: "Practical modifications and daily habits that can significantly reduce the risk of falls for seniors living independently.",
+            category: "Safety",
+            author: "Emma Thompson",
+            date: "Nov 15, 2024",
+            image: "https://images.unsplash.com/photo-1516307365426-bea591f05011?q=80&w=2060&auto=format&fit=crop",
+            readTime: "5 min read"
         },
         {
-            title: 'Dementia Care: Creating a Safe and Supportive Home Environment',
-            excerpt: 'Practical tips for adapting your home for someone with dementia, from lighting to layout and daily routines.',
-            category: 'Dementia Care',
-            readTime: '9 min read',
-            date: '8 Aug, 2024',
-            author: 'Emily Roberts',
-            image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop'
+            id: 4,
+            title: "Nutrition Guide for Seniors",
+            excerpt: "How to maintain a healthy, balanced diet that supports immunity and energy levels in later life.",
+            category: "Health & Wellness",
+            author: "Dr. Sarah Miller",
+            date: "Nov 12, 2024",
+            image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=2053&auto=format&fit=crop",
+            readTime: "7 min read"
         },
         {
-            title: 'Nutrition and Meal Planning for Elderly Care',
-            excerpt: 'Discover nutritious meal ideas and dietary considerations for seniors, including tips for managing special dietary needs.',
-            category: 'Health & Wellness',
-            readTime: '5 min read',
-            date: '6 Aug, 2024',
-            author: 'James Thompson',
-            image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&h=400&fit=crop'
+            id: 5,
+            title: "The Benefits of Companionship Care",
+            excerpt: "Why social interaction is crucial for mental health and how a companion carer can brighten daily life.",
+            category: "Mental Health",
+            author: "James Wilson",
+            date: "Nov 10, 2024",
+            image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2664&auto=format&fit=crop",
+            readTime: "4 min read"
         },
         {
-            title: 'Managing Medications: A Guide for Family Caregivers',
-            excerpt: 'Essential tips for organizing medications, preventing errors, and ensuring your loved one takes prescriptions correctly.',
-            category: 'Medical Care',
-            readTime: '7 min read',
-            date: '4 Aug, 2024',
-            author: 'Dr. Sarah Mitchell',
-            image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&h=400&fit=crop'
-        },
+            id: 6,
+            title: "Navigating Care Funding in the UK",
+            excerpt: "A breakdown of available financial support, including Attendance Allowance and NHS Continuing Healthcare.",
+            category: "Finance",
+            author: "Emma Thompson",
+            date: "Nov 05, 2024",
+            image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2626&auto=format&fit=crop",
+            readTime: "10 min read"
+        }
     ];
 
     return (
-        <>
+        <div className="min-h-screen bg-slate-50 font-sans">
             <Header />
 
-            <main className="bg-white min-h-screen">
+            <main>
                 {/* Hero Section */}
-                <section className="gradient-purple py-20 relative overflow-hidden">
-                    <div className="absolute inset-0 opacity-10">
-                        <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl"></div>
-                        <div className="absolute bottom-10 right-10 w-40 h-40 bg-white rounded-full blur-3xl"></div>
+                <section className="relative pt-32 pb-20 bg-purple-900 overflow-hidden">
+                    <div className="absolute inset-0 z-0">
+                        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+                        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-500 rounded-full blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2"></div>
+                        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-teal-500 rounded-full blur-3xl opacity-20 translate-y-1/2 -translate-x-1/2"></div>
                     </div>
-                    
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-                        <div className="text-center space-y-6 max-w-3xl mx-auto">
-                            <div className="inline-block">
-                                <span className="badge-primary bg-white/20 text-white border-white/30">
-                                    Expert Care Advice
-                                </span>
-                            </div>
-                            <h1 className="heading-hero text-white">
-                                MeddyCare <span className="text-yellow-300">Insights</span>
-                            </h1>
-                            <p className="body-xl text-white/90">
-                                Your trusted resource for understanding care options, financial planning, and support for families.
-                            </p>
-                            
-                            {/* Search Bar */}
-                            <div className="max-w-2xl mx-auto pt-4">
-                                <div className="relative">
-                                    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-(--text-muted)" />
-                                    <input
-                                        type="text"
-                                        placeholder="Search articles..."
-                                        className="w-full pl-12 pr-4 py-4 rounded-full border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white placeholder-white/60 focus:outline-none focus:border-white/50 transition-all"
+
+                    <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                        <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-purple-200 font-bold text-sm tracking-wide mb-6">
+                            MeddyCare Knowledge Hub
+                        </span>
+                        <h1 className="font-fraunces text-5xl md:text-7xl text-white mb-6">
+                            Insights & <span className="text-purple-300 italic">Advice</span>
+                        </h1>
+                        <p className="text-xl text-purple-100 max-w-2xl mx-auto leading-relaxed font-urbanist">
+                            Expert guides, latest news, and practical tips to help you navigate the journey of caregiving with confidence.
+                        </p>
+                    </div>
+                </section>
+
+                {/* Blog Grid */}
+                <section className="py-24">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        {/* Featured Post (First one) */}
+                        <div className="mb-16">
+                            <div className="bg-white rounded-3xl overflow-hidden shadow-xl shadow-purple-900/5 border border-slate-100 flex flex-col lg:flex-row group hover:shadow-2xl hover:shadow-purple-900/10 transition-all duration-300">
+                                <div className="lg:w-1/2 relative h-64 lg:h-auto overflow-hidden">
+                                    <Image
+                                        src={posts[0].image}
+                                        alt={posts[0].title}
+                                        fill
+                                        className="object-cover transition-transform duration-700 group-hover:scale-105"
                                     />
+                                    <div className="absolute top-6 left-6">
+                                        <span className="px-4 py-2 bg-white/90 backdrop-blur-sm text-purple-700 font-bold text-sm rounded-full shadow-sm">
+                                            Featured
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Category Pills */}
-                <section className="bg-white py-6 border-b border-(--border-light) sticky top-0 z-10 shadow-sm">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="flex flex-wrap gap-3">
-                            <button className="px-6 py-3 rounded-full gradient-purple text-white font-urbanist font-semibold text-sm hover:opacity-90 transition-all shadow-md">
-                                All Articles
-                            </button>
-                            <button className="px-6 py-3 rounded-full bg-(--brand-purple-50) text-(--brand-purple) font-urbanist font-semibold text-sm hover:bg-(--brand-purple-subtle) transition-colors">
-                                Live-in Care
-                            </button>
-                            <button className="px-6 py-3 rounded-full bg-(--brand-purple-50) text-(--brand-purple) font-urbanist font-semibold text-sm hover:bg-(--brand-purple-subtle) transition-colors">
-                                Dementia Care
-                            </button>
-                            <button className="px-6 py-3 rounded-full bg-(--brand-purple-50) text-(--brand-purple) font-urbanist font-semibold text-sm hover:bg-(--brand-purple-subtle) transition-colors">
-                                Financial Planning
-                            </button>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Main Content with Sidebar */}
-                <section className="py-16 bg-(--bg-gray)">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="grid lg:grid-cols-4 gap-12">
-                            {/* Main Content */}
-                            <div className="lg:col-span-3 space-y-12">
-                                {/* Featured Post */}
-                                <Link href="/blog/sample-post" className="group block">
-                                    <div className="card-elevated overflow-hidden p-0">
-                                        <div className="relative h-80">
-                                            <Image
-                                                src={featuredPost.image}
-                                                alt={featuredPost.title}
-                                                fill
-                                                className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                            />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                                            <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                                                <span className="badge-primary bg-white/20 text-white border-white/30 mb-4">
-                                                    {featuredPost.category}
-                                                </span>
-                                                <h2 className="heading-lg text-white mb-3 group-hover:text-yellow-300 transition-colors">
-                                                    {featuredPost.title}
-                                                </h2>
-                                                <p className="body-md text-white/90 mb-4">
-                                                    {featuredPost.excerpt}
-                                                </p>
-                                                <div className="flex items-center gap-4 text-sm text-white/80">
-                                                    <span className="flex items-center gap-1">
-                                                        <Calendar className="w-4 h-4" />
-                                                        {featuredPost.date}
-                                                    </span>
-                                                    <span className="flex items-center gap-1">
-                                                        <Clock className="w-4 h-4" />
-                                                        {featuredPost.readTime}
-                                                    </span>
-                                                </div>
+                                <div className="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
+                                    <div className="flex items-center gap-4 text-sm text-slate-500 mb-4 font-medium">
+                                        <span className="text-purple-600 font-bold flex items-center gap-1">
+                                            <Tag size={14} />
+                                            {posts[0].category}
+                                        </span>
+                                        <span>•</span>
+                                        <span className="flex items-center gap-1">
+                                            <Calendar size={14} />
+                                            {posts[0].date}
+                                        </span>
+                                    </div>
+                                    <h2 className="font-fraunces text-3xl md:text-4xl text-slate-900 mb-4 group-hover:text-purple-700 transition-colors">
+                                        {posts[0].title}
+                                    </h2>
+                                    <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+                                        {posts[0].excerpt}
+                                    </p>
+                                    <div className="flex items-center justify-between mt-auto">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-700 font-bold">
+                                                {posts[0].author.charAt(0)}
+                                            </div>
+                                            <div>
+                                                <p className="text-sm font-bold text-slate-900">{posts[0].author}</p>
+                                                <p className="text-xs text-slate-500">{posts[0].readTime}</p>
                                             </div>
                                         </div>
-                                    </div>
-                                </Link>
-
-                                {/* Blog Grid */}
-                                <div className="grid md:grid-cols-2 gap-8">
-                                    {blogPosts.map((post, i) => (
-                                        <Link href="/blog/sample-post" key={i} className="group">
-                                            <div className="card-flat overflow-hidden p-0 h-full flex flex-col">
-                                                <div className="relative h-56 overflow-hidden">
-                                                    <Image
-                                                        src={post.image}
-                                                        alt={post.title}
-                                                        fill
-                                                        className="object-cover group-hover:scale-110 transition-transform duration-500"
-                                                    />
-                                                </div>
-                                                <div className="p-6 flex-1 flex flex-col">
-                                                    <div className="flex items-center gap-3 mb-3">
-                                                        <span className="label-sm text-(--brand-purple) bg-(--brand-purple-50) px-3 py-1 rounded-full">
-                                                            {post.category}
-                                                        </span>
-                                                        <span className="body-sm text-(--text-muted) flex items-center gap-1">
-                                                            <Clock className="w-3 h-3" />
-                                                            {post.readTime}
-                                                        </span>
-                                                    </div>
-                                                    <h3 className="heading-sm text-(--text-primary) mb-3 group-hover:text-(--brand-purple) transition-colors line-clamp-2">
-                                                        {post.title}
-                                                    </h3>
-                                                    <p className="body-sm text-(--text-secondary) mb-4 line-clamp-3 flex-1">
-                                                        {post.excerpt}
-                                                    </p>
-                                                    <div className="flex items-center justify-between pt-4 border-t border-(--border-light)">
-                                                        <span className="body-sm text-(--text-muted)">
-                                                            {post.author}
-                                                        </span>
-                                                        <ArrowRight className="w-5 h-5 text-(--brand-purple) group-hover:translate-x-1 transition-transform" />
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <Link href={`/blog/${posts[0].id}`} className="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:bg-purple-600 hover:text-white hover:border-purple-600 transition-all">
+                                            <ArrowRight size={20} />
                                         </Link>
-                                    ))}
+                                    </div>
                                 </div>
                             </div>
-
-                            {/* Sidebar */}
-                            <aside className="lg:col-span-1 space-y-8">
-                                {/* Recent Posts */}
-                                <div className="card-flat">
-                                    <h3 className="heading-sm text-(--text-primary) mb-6">
-                                        Recent Posts
-                                    </h3>
-                                    <div className="space-y-6">
-                                        {recentPosts.map((post, i) => (
-                                            <Link href="/blog/sample-post" key={i} className="group block">
-                                                <div className="flex gap-4">
-                                                    <div className="relative w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden">
-                                                        <Image
-                                                            src={post.image}
-                                                            alt={post.title}
-                                                            fill
-                                                            className="object-cover group-hover:scale-110 transition-transform duration-300"
-                                                        />
-                                                    </div>
-                                                    <div className="flex-1 min-w-0">
-                                                        <h4 className="body-sm font-urbanist font-bold text-(--text-primary) line-clamp-2 group-hover:text-(--brand-purple) transition-colors mb-1">
-                                                            {post.title}
-                                                        </h4>
-                                                        <p className="text-xs text-(--text-muted) flex items-center gap-1">
-                                                            <Calendar className="w-3 h-3" />
-                                                            {post.date}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </Link>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                {/* Tags */}
-                                <div className="card-flat">
-                                    <h3 className="heading-sm text-(--text-primary) mb-6">
-                                        Popular Topics
-                                    </h3>
-                                    <div className="flex flex-wrap gap-2">
-                                        {tags.map((tag, i) => (
-                                            <button
-                                                key={i}
-                                                className="px-3 py-2 bg-(--brand-purple-50) text-(--brand-purple) rounded-full text-xs font-urbanist font-medium hover:bg-(--brand-purple) hover:text-white transition-colors"
-                                            >
-                                                {tag}
-                                            </button>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                {/* Newsletter CTA */}
-                                <div className="gradient-purple rounded-3xl p-6 text-white">
-                                    <h3 className="heading-sm text-white mb-3">
-                                        Stay Updated
-                                    </h3>
-                                    <p className="body-sm text-white/90 mb-4">
-                                        Get the latest care insights delivered to your inbox.
-                                    </p>
-                                    <input
-                                        type="email"
-                                        placeholder="Your email"
-                                        className="w-full px-4 py-3 rounded-full border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white placeholder-white/60 focus:outline-none focus:border-white/50 transition-all mb-3"
-                                    />
-                                    <button className="w-full px-6 py-3 bg-white text-(--brand-purple) rounded-full font-urbanist font-bold hover:bg-gray-100 transition-colors">
-                                        Subscribe
-                                    </button>
-                                </div>
-                            </aside>
                         </div>
+
+                        {/* Recent Posts Grid */}
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {posts.slice(1).map((post) => (
+                                <article key={post.id} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl hover:shadow-purple-900/10 hover:-translate-y-1 transition-all duration-300 group flex flex-col">
+                                    <div className="relative h-56 overflow-hidden">
+                                        <Image
+                                            src={post.image}
+                                            alt={post.title}
+                                            fill
+                                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                        />
+                                        <div className="absolute top-4 left-4">
+                                            <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-purple-700 font-bold text-xs rounded-full shadow-sm">
+                                                {post.category}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div className="p-6 flex-1 flex flex-col">
+                                        <div className="flex items-center gap-3 text-xs text-slate-500 mb-3 font-medium">
+                                            <span className="flex items-center gap-1">
+                                                <Calendar size={12} />
+                                                {post.date}
+                                            </span>
+                                            <span>•</span>
+                                            <span>{post.readTime}</span>
+                                        </div>
+                                        <h3 className="font-fraunces text-xl text-slate-900 mb-3 group-hover:text-purple-700 transition-colors line-clamp-2">
+                                            {post.title}
+                                        </h3>
+                                        <p className="text-slate-600 text-sm mb-6 line-clamp-3 flex-1">
+                                            {post.excerpt}
+                                        </p>
+                                        <div className="flex items-center justify-between pt-6 border-t border-slate-50 mt-auto">
+                                            <div className="flex items-center gap-2">
+                                                <div className="w-6 h-6 bg-slate-100 rounded-full flex items-center justify-center text-slate-600 text-xs font-bold">
+                                                    {post.author.charAt(0)}
+                                                </div>
+                                                <span className="text-xs font-bold text-slate-700">{post.author}</span>
+                                            </div>
+                                            <Link href={`/blog/${post.id}`} className="text-sm font-bold text-purple-600 hover:text-purple-700 flex items-center gap-1">
+                                                Read Article <ArrowRight size={14} />
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </article>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* Newsletter CTA */}
+                <section className="py-20 bg-slate-900 text-white overflow-hidden relative">
+                    <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600 rounded-full blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2"></div>
+                    <div className="absolute bottom-0 left-0 w-96 h-96 bg-teal-600 rounded-full blur-3xl opacity-20 translate-y-1/2 -translate-x-1/2"></div>
+
+                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                        <h2 className="font-fraunces text-4xl mb-6">Stay informed</h2>
+                        <p className="text-lg text-slate-300 mb-10 max-w-2xl mx-auto">
+                            Join 10,000+ families receiving our weekly newsletter with care tips, health advice, and MeddyCare updates.
+                        </p>
+                        <form className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+                            <input
+                                type="email"
+                                placeholder="Enter your email address"
+                                className="flex-1 px-6 py-4 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500 backdrop-blur-sm"
+                            />
+                            <button className="btn-primary px-8 py-4 whitespace-nowrap">
+                                Subscribe
+                            </button>
+                        </form>
+                        <p className="text-xs text-slate-500 mt-4">
+                            We respect your privacy. Unsubscribe at any time.
+                        </p>
                     </div>
                 </section>
             </main>
 
             <Footer />
-        </>
+        </div>
     );
 }

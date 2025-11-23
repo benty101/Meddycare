@@ -1,0 +1,158 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e5]:
+    - generic [ref=e6]: "Limited Offer: Get 15% off your first month • Quality care from £950/week"
+    - generic [ref=e8]: "Limited Offer: Get 15% off your first month • Quality care from £950/week"
+    - generic [ref=e10]: "Limited Offer: Get 15% off your first month • Quality care from £950/week"
+    - generic [ref=e12]: "Limited Offer: Get 15% off your first month • Quality care from £950/week"
+  - banner [ref=e14]:
+    - generic [ref=e16]:
+      - link "MeddyCare Logo MeddyCare" [ref=e17] [cursor=pointer]:
+        - /url: /
+        - img "MeddyCare Logo" [ref=e18]
+        - generic [ref=e19]: MeddyCare
+      - navigation [ref=e20]:
+        - link "About us" [ref=e21] [cursor=pointer]:
+          - /url: /about
+        - link "For Families" [ref=e22] [cursor=pointer]:
+          - /url: /get-care
+        - link "Carer" [ref=e23] [cursor=pointer]:
+          - /url: /become-a-carer
+        - link "Insights & Advice" [ref=e24] [cursor=pointer]:
+          - /url: /blog
+      - generic [ref=e25]:
+        - link "Call us 0118 989 9970" [ref=e26] [cursor=pointer]:
+          - /url: tel:01189899970
+          - img [ref=e27]
+          - generic [ref=e29]:
+            - generic [ref=e30]: Call us
+            - generic [ref=e31]: 0118 989 9970
+        - link "Sign in" [ref=e32] [cursor=pointer]:
+          - /url: /login
+        - link "Find a Carer" [ref=e33] [cursor=pointer]:
+          - /url: /get-care
+  - main [ref=e34]:
+    - generic [ref=e36]:
+      - generic [ref=e37]: Get In Touch
+      - heading "We're Here to Help You" [level=1] [ref=e38]
+      - paragraph [ref=e39]: Have questions about our services? Want to discuss your care needs? Our team is ready to assist you every step of the way.
+    - generic [ref=e42]:
+      - generic [ref=e43]:
+        - img [ref=e45]
+        - heading "Call Us" [level=3] [ref=e47]
+        - paragraph [ref=e48]: (215) 424-7763
+        - paragraph [ref=e49]: Mon-Sun, 24/7
+      - generic [ref=e50]:
+        - img [ref=e52]
+        - heading "Email Us" [level=3] [ref=e55]
+        - paragraph [ref=e56]: hello@meddycare.com
+        - paragraph [ref=e57]: 24h response time
+      - generic [ref=e58]:
+        - img [ref=e60]
+        - heading "Visit Us" [level=3] [ref=e63]
+        - paragraph [ref=e64]: 5917 Rowsgate Ln
+        - paragraph [ref=e65]: Wilmington, NC 28411
+      - generic [ref=e66]:
+        - img [ref=e68]
+        - heading "Open Hours" [level=3] [ref=e71]
+        - paragraph [ref=e72]: 24/7 Available
+        - paragraph [ref=e73]: Every day of the year
+    - generic [ref=e76]:
+      - generic [ref=e77]:
+        - heading "Send Us a Message" [level=2] [ref=e78]
+        - paragraph [ref=e79]: Fill out the form below and we'll get back to you as soon as possible.
+      - generic [ref=e80]:
+        - generic [ref=e81]:
+          - generic [ref=e82]:
+            - text: Full Name *
+            - textbox "John Doe" [ref=e83]
+          - generic [ref=e84]:
+            - text: Email Address *
+            - textbox "john@example.com" [ref=e85]
+        - generic [ref=e86]:
+          - generic [ref=e87]:
+            - text: Phone Number
+            - textbox "(215) 424-7763" [ref=e88]
+          - generic [ref=e89]:
+            - text: Subject *
+            - combobox [ref=e90]:
+              - option "Select a subject" [selected]
+              - option "General Inquiry"
+              - option "Care Services"
+              - option "Become a Carer"
+              - option "Support"
+              - option "Other"
+        - generic [ref=e91]:
+          - text: Message *
+          - textbox "Tell us how we can help you..." [ref=e92]
+        - button "Send Message" [ref=e93]
+    - generic [ref=e95]:
+      - generic [ref=e96]:
+        - heading "Find Us on the Map" [level=2] [ref=e97]
+        - paragraph [ref=e98]: Visit our office or schedule a consultation at our location
+      - iframe [ref=e100]:
+        
+  - contentinfo [ref=e101]:
+    - generic [ref=e102]:
+      - generic [ref=e103]:
+        - generic [ref=e104]:
+          - link "MeddyCare Logo MeddyCare" [ref=e105] [cursor=pointer]:
+            - /url: /
+            - img "MeddyCare Logo" [ref=e106]
+            - generic [ref=e107]: MeddyCare
+          - generic [ref=e108]:
+            - heading "Legal" [level=3] [ref=e109]
+            - paragraph [ref=e110]: MeddyCare is an introductory agency connecting families with self-employed carers. We are not CQC regulated as we do not provide care directly.
+        - generic [ref=e111]:
+          - heading "Company" [level=3] [ref=e112]
+          - list [ref=e113]:
+            - listitem [ref=e114]:
+              - link "About Us" [ref=e115] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e116]:
+              - link "For Families" [ref=e117] [cursor=pointer]:
+                - /url: /get-care
+            - listitem [ref=e118]:
+              - link "Carer" [ref=e119] [cursor=pointer]:
+                - /url: /become-a-carer
+            - listitem [ref=e120]:
+              - link "Contact Us" [ref=e121] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=e122]:
+              - link "Insights & Advice" [ref=e123] [cursor=pointer]:
+                - /url: /blog
+        - generic [ref=e124]:
+          - heading "Our Office" [level=3] [ref=e125]
+          - generic [ref=e126]:
+            - generic [ref=e127]:
+              - img [ref=e128]
+              - generic [ref=e130]: Monday to Sunday (Open 24/7)
+            - generic [ref=e131]:
+              - img [ref=e132]
+              - generic [ref=e134]: 5917 Rowsgate Ln Wilmington, NC 28411,
+            - generic [ref=e135]:
+              - img [ref=e136]
+              - generic [ref=e138]: 0118 989 9970
+            - generic [ref=e139]:
+              - img [ref=e140]
+              - generic [ref=e142]: hello@meddycare.com
+        - generic [ref=e143]:
+          - heading "Get Our Daily Newsletter" [level=3] [ref=e144]
+          - generic [ref=e145]:
+            - textbox "Enter your email" [ref=e146]
+            - button "Subscribe" [ref=e147]
+          - generic [ref=e148]:
+            - heading "Our awards" [level=4] [ref=e149]
+            - img "Awards and certifications" [ref=e150]
+      - generic [ref=e152]:
+        - generic [ref=e153]:
+          - link "Terms And Condition" [ref=e154] [cursor=pointer]:
+            - /url: /terms
+          - link "Customer Privacy Policy" [ref=e155] [cursor=pointer]:
+            - /url: /privacy
+        - paragraph [ref=e156]: © Copyright meddycare 2025
+  - button "Open Next.js Dev Tools" [ref=e162] [cursor=pointer]:
+    - img [ref=e163]
+```

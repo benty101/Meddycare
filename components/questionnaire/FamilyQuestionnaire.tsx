@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { ChevronLeft, Check, Sparkles } from 'lucide-react';
+import { ChevronLeft, Check, Sparkles, ArrowRight, Quote } from 'lucide-react';
+import Image from 'next/image';
 import { ProgressBar } from './ProgressBar';
 import { QuestionCard } from './QuestionCard';
 import { ContactForm } from './ContactForm';
@@ -47,8 +48,6 @@ export function FamilyQuestionnaire() {
   const handleGoogleSignIn = async () => {
     setIsLoading(true);
     try {
-      // TODO: Implement Google OAuth
-      // For now, simulate and redirect
       await saveQuestionnaireData('google');
       router.push('/dashboard/family');
     } catch (error) {
@@ -137,106 +136,103 @@ export function FamilyQuestionnaire() {
   };
 
   if (isComplete) {
-    return (
-      <div className="min-h-screen flex items-center justify-center py-16 px-4" style={{ background: 'linear-gradient(to bottom, #3d4db5, #5B7FED, #3d4db5)' }}>
-        <div className="max-w-2xl w-full">
-          <div className="bg-white rounded-3xl shadow-2xl p-12 text-center space-y-6">
-            <div className="w-24 h-24 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto shadow-lg">
-              <Check className="w-12 h-12 text-white" strokeWidth={3} />
+    // Redirect to matches page instead of showing success screen
+    router.push('/families/matches');
+    return null;
+  }
+
+  return (
+    <div className="min-h-screen flex flex-col lg:flex-row bg-white">
+      {/* Left Panel - Editorial Image (Hidden on mobile) */}
+      <div className="hidden lg:flex lg:w-1/2 bg-slate-900 relative overflow-hidden items-center justify-center p-12">
+        <Image
+          src="https://images.pexels.com/photos/3768131/pexels-photo-3768131.jpeg"
+          alt="Care background"
+          fill
+          className="object-cover opacity-60"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
+
+        <div className="relative z-10 max-w-lg text-white space-y-8">
+          <Quote className="w-12 h-12 text-purple-400 opacity-80" />
+          <p className="text-3xl font-fraunces leading-tight">
+            "Finding a carer who truly understood my mother's needs was life-changing. MeddyCare made it simple."
+          </p>
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm overflow-hidden relative">
+              <Image src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg" alt="Sarah" fill className="object-cover" />
             </div>
-            <h2 className="text-3xl font-sora font-bold text-gray-900">
-              We'll be in touch soon!
-            </h2>
-            <p className="text-lg text-gray-600 max-w-md mx-auto font-inter">
-              Thank you for your interest. Our care advisors will call you within 24 hours to discuss your needs and find the perfect carer.
-            </p>
-            <div className="pt-6">
-              <a href="/" className="inline-block px-8 py-4 bg-brand-purple text-white rounded-full font-urbanist font-semibold hover:bg-brand-purple-dark transition-all">
-                Return to Home
-              </a>
+            <div>
+              <p className="font-bold">Sarah Jenkins</p>
+              <p className="text-sm text-slate-300">Daughter & Primary Caregiver</p>
             </div>
           </div>
         </div>
       </div>
-    );
-  }
 
-  return (
-    <div className="min-h-screen py-12 px-4" style={{ background: 'linear-gradient(to bottom, #3d4db5, #5B7FED, #3d4db5)' }}>
-      <div className="max-w-4xl mx-auto">
-        {/* New Badge */}
-        <div className="flex justify-center mb-6">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent-pink rounded-full">
-            <Sparkles className="w-4 h-4 text-white" />
-            <span className="text-white font-urbanist font-bold text-sm uppercase tracking-wide">
-              New
-            </span>
+      {/* Right Panel - Questionnaire */}
+      <div className="flex-1 flex flex-col justify-center p-6 md:p-12 lg:p-20 bg-slate-50 overflow-y-auto h-screen">
+        <div className="max-w-xl mx-auto w-full space-y-8">
+          {/* Header */}
+          <div className="flex items-center justify-between mb-8">
+            <button onClick={() => router.push('/')} className="text-slate-400 hover:text-purple-600 transition-colors flex items-center gap-2 text-sm font-bold uppercase tracking-wider">
+              <ChevronLeft className="w-4 h-4" /> Exit
+            </button>
+            <div className="text-slate-400 text-sm font-bold">
+              Step {currentStep + 1} of {familyQuestions.length}
+            </div>
           </div>
-        </div>
 
-        {/* Title */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-sora font-bold text-white mb-3">
-            To pair you with the right carer,
-          </h1>
-          <p className="text-xl text-purple-200 font-urbanist font-semibold">
-            we'll ask a few short questions.
-          </p>
-        </div>
+          {/* Progress Bar */}
+          <ProgressBar currentStep={currentStep} totalSteps={familyQuestions.length} />
 
-        {/* Progress Bar */}
-        <ProgressBar currentStep={currentStep} totalSteps={familyQuestions.length} />
+          {/* Question Content */}
+          <div className="space-y-8 min-h-[400px]">
+            <h1 className="text-3xl md:text-4xl font-fraunces text-slate-900 leading-tight">
+              {currentQuestion?.question}
+            </h1>
 
-        {/* Question Card */}
-        <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 mb-8">
-          <h2 className="text-2xl md:text-3xl font-urbanist font-bold text-gray-900 mb-8 text-center">
-            {currentQuestion?.question}
-          </h2>
+            {isContactStep ? (
+              <ContactForm value={contactInfo} onChange={setContactInfo} />
+            ) : isLastQuestion ? (
+              <AuthCompletionStep
+                onGoogleSignIn={handleGoogleSignIn}
+                onEmailSignup={handleEmailSignup}
+                onRequestCallback={handleRequestCallback}
+                isLoading={isLoading}
+              />
+            ) : (
+              <QuestionCard
+                question={currentQuestion}
+                value={responses[currentQuestion?.id] || (currentQuestion?.type === 'multiple-choice' ? [] : '')}
+                onChange={(value) => handleResponseChange(currentQuestion?.id, value)}
+              />
+            )}
+          </div>
 
-          {isContactStep ? (
-            <ContactForm value={contactInfo} onChange={setContactInfo} />
-          ) : isLastQuestion ? (
-            <AuthCompletionStep
-              onGoogleSignIn={handleGoogleSignIn}
-              onEmailSignup={handleEmailSignup}
-              onRequestCallback={handleRequestCallback}
-              isLoading={isLoading}
-            />
-          ) : (
-            <QuestionCard
-              question={currentQuestion}
-              value={responses[currentQuestion?.id] || (currentQuestion?.type === 'multiple-choice' ? [] : '')}
-              onChange={(value) => handleResponseChange(currentQuestion?.id, value)}
-            />
-          )}
-        </div>
-
-        {/* Navigation */}
-        {!isLastQuestion && (
-          <div className="flex items-center justify-between">
-            {currentStep > 0 ? (
+          {/* Navigation Buttons */}
+          {!isLastQuestion && (
+            <div className="flex items-center justify-between pt-8 border-t border-slate-200">
               <button
                 type="button"
                 onClick={handleBack}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm text-white rounded-full hover:bg-white/20 transition-all font-urbanist font-semibold border border-white/20"
+                disabled={currentStep === 0}
+                className={`text-slate-500 font-bold hover:text-slate-800 transition-colors ${currentStep === 0 ? 'opacity-0 cursor-default' : ''}`}
               >
-                <ChevronLeft className="w-5 h-5" />
                 Back
               </button>
-            ) : (
-              <div />
-            )}
 
-            <button
-              type="button"
-              onClick={handleNext}
-              disabled={isNextDisabled()}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-brand-purple rounded-full hover:bg-gray-100 transition-all font-urbanist font-bold shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              Continue
-            </button>
-          </div>
-        )}
+              <button
+                type="button"
+                onClick={handleNext}
+                disabled={isNextDisabled()}
+                className="inline-flex items-center gap-2 px-8 py-4 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-all font-bold shadow-lg shadow-purple-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none"
+              >
+                Continue <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -28,7 +28,7 @@ export default function Footer() {
             <div className="space-y-4">
               <h3 className="text-lg font-urbanist font-bold text-black">Legal</h3>
               <p className="body-md text-gray-600">
-                MeddyCare is an introductory agency connecting families with self-employed carers. 
+                MeddyCare is an introductory agency connecting families with self-employed carers.
                 We are not CQC regulated as we do not provide care directly.
               </p>
             </div>
@@ -41,6 +41,7 @@ export default function Footer() {
               <li><Link href="/about" className="label-lg text-(--text-muted) hover:text-(--brand-purple) transition-colors">About Us</Link></li>
               <li><Link href="/get-care" className="label-lg text-(--text-muted) hover:text-(--brand-purple) transition-colors">For Families</Link></li>
               <li><Link href="/become-a-carer" className="label-lg text-(--text-muted) hover:text-(--brand-purple) transition-colors">Carer</Link></li>
+              <li><Link href="/contact" className="label-lg text-(--text-muted) hover:text-(--brand-purple) transition-colors">Contact Us</Link></li>
               <li><Link href="/blog" className="label-lg text-(--text-muted) hover:text-(--brand-purple) transition-colors">Insights & Advice</Link></li>
             </ul>
           </div>
