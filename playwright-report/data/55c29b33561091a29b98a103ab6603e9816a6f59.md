@@ -1,0 +1,371 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e5]:
+    - generic [ref=e6]: "Limited Offer: Get 15% off your first month • Quality care from £950/week"
+    - generic [ref=e8]: "Limited Offer: Get 15% off your first month • Quality care from £950/week"
+    - generic [ref=e10]: "Limited Offer: Get 15% off your first month • Quality care from £950/week"
+    - generic [ref=e12]: "Limited Offer: Get 15% off your first month • Quality care from £950/week"
+  - banner [ref=e14]:
+    - generic [ref=e16]:
+      - link "MeddyCare Logo MeddyCare" [ref=e17] [cursor=pointer]:
+        - /url: /
+        - img "MeddyCare Logo" [ref=e18]
+        - generic [ref=e19]: MeddyCare
+      - navigation [ref=e20]:
+        - link "About us" [ref=e21] [cursor=pointer]:
+          - /url: /about
+        - link "For Families" [ref=e22] [cursor=pointer]:
+          - /url: /get-care
+        - link "Carer" [ref=e23] [cursor=pointer]:
+          - /url: /become-a-carer
+        - link "Insights & Advice" [ref=e24] [cursor=pointer]:
+          - /url: /blog
+      - generic [ref=e25]:
+        - link "Call us 0118 989 9970" [ref=e26] [cursor=pointer]:
+          - /url: tel:01189899970
+          - img [ref=e27]
+          - generic [ref=e29]:
+            - generic [ref=e30]: Call us
+            - generic [ref=e31]: 0118 989 9970
+        - link "Sign in" [ref=e32] [cursor=pointer]:
+          - /url: /login
+        - link "Find a Carer" [ref=e33] [cursor=pointer]:
+          - /url: /get-care
+  - main [ref=e34]:
+    - generic [ref=e37]:
+      - generic [ref=e38]:
+        - generic [ref=e40]: Caring for Every Golden Year
+        - heading "Search and connect with trusted live-in carers" [level=1] [ref=e41]
+        - paragraph [ref=e42]: We have connected over 5,000 families with professional, self-employed carers across the UK. Share your needs, explore your options, and choose the right carer for your loved one.
+        - generic [ref=e43]:
+          - link "Find a Carer Today" [ref=e44] [cursor=pointer]:
+            - /url: /families/questionnaire
+          - link "Call 0118 989 9970" [ref=e45] [cursor=pointer]:
+            - /url: tel:01189899970
+            - img [ref=e46]
+            - text: Call 0118 989 9970
+        - generic [ref=e49]:
+          - generic [ref=e50]:
+            - img [ref=e51]
+            - img [ref=e53]
+            - img [ref=e55]
+            - img [ref=e57]
+            - img [ref=e59]
+          - generic [ref=e61]: Excellent 4.9/5 from 778 reviews
+      - generic [ref=e62]:
+        - img [ref=e63]
+        - img [ref=e66]
+        - img "Elderly woman and younger caregiver smiling together outdoors - Quan Jing on Unsplash" [ref=e70]
+        - img "Multi-generational family gathering outdoors - Askar Abayev on Pexels" [ref=e72]
+        - img "Elderly person in wheelchair with caregiver - Quan Jing on Unsplash" [ref=e74]
+    - generic [ref=e77]:
+      - generic [ref=e78]:
+        - img [ref=e79]
+        - generic [ref=e84]: DBS Checked
+      - generic [ref=e85]:
+        - img [ref=e86]
+        - generic [ref=e91]: Fully Insured
+      - generic [ref=e92]:
+        - img [ref=e93]
+        - generic [ref=e95]: Trustpilot 4.9/5
+      - generic [ref=e96]:
+        - img [ref=e97]
+        - generic [ref=e102]: 24/7 Support
+    - generic [ref=e104]:
+      - generic [ref=e105]:
+        - heading "Why Choose MeddyCare" [level=2] [ref=e106]
+        - paragraph [ref=e107]: Trusted by families, recognized by experts. We provide the highest standard of care.
+      - generic [ref=e108]:
+        - generic [ref=e109]:
+          - img [ref=e111]
+          - heading "Vetted & DBS Checked Carers" [level=3] [ref=e116]
+          - paragraph [ref=e117]: All our carers are thoroughly vetted and DBS checked, ensuring safety and peace of mind for you and your loved ones.
+        - generic [ref=e118]:
+          - img [ref=e120]
+          - heading "Verified Carers" [level=3] [ref=e125]
+          - paragraph [ref=e126]: We carefully verify every carer before connecting them with you. This ensures you get reliable, safe, and professional support.
+        - generic [ref=e127]:
+          - img [ref=e129]
+          - heading "Carer-Set Rates" [level=3] [ref=e134]
+          - paragraph [ref=e135]: Each carer sets their own rates, giving you the freedom to find the right match for your care needs and budget.
+    - generic [ref=e138]:
+      - img "Elderly woman with caregiver" [ref=e140]
+      - generic [ref=e141]:
+        - generic [ref=e142]:
+          - heading "3 Simple Steps to Start Care" [level=2] [ref=e143]
+          - paragraph [ref=e144]: Care made simple — share your needs, meet carers, and start with confidence.
+        - generic [ref=e145]:
+          - generic [ref=e146]:
+            - generic [ref=e148]: "1"
+            - generic [ref=e149]:
+              - heading "Request Care Easily" [level=3] [ref=e150]
+              - paragraph [ref=e151]: Fill out a quick form to share what kind of support you're looking for, so we can understand your exact needs.
+          - generic [ref=e153]:
+            - generic [ref=e155]: "2"
+            - generic [ref=e156]:
+              - heading "Get Matched Quickly" [level=3] [ref=e157]
+              - paragraph [ref=e158]: Within 24 hours, you'll receive tailored carer profiles. Chat with them or set up a call to find the right fit.
+          - generic [ref=e160]:
+            - generic [ref=e162]: "3"
+            - generic [ref=e163]:
+              - heading "Start Care Smoothly" [level=3] [ref=e164]
+              - paragraph [ref=e165]: Use MyElder to stay in touch, manage your care plan, and make payments safely and securely.
+        - link "Find a Carer Today" [ref=e166] [cursor=pointer]:
+          - /url: /families/questionnaire
+    - generic [ref=e168]:
+      - generic [ref=e169]:
+        - heading "Trusted by Families Like Yours" [level=2] [ref=e170]
+        - paragraph [ref=e171]: Hear from families who have found peace of mind with our trusted carers.
+      - generic [ref=e172]:
+        - generic [ref=e174]:
+          - img [ref=e176]
+          - generic [ref=e179]:
+            - img [ref=e180]
+            - img [ref=e182]
+            - img [ref=e184]
+            - img [ref=e186]
+            - img [ref=e188]
+          - paragraph [ref=e190]: "\"Sarah has been absolutely wonderful with my mother. Her patience and genuine care shine through every day. We couldn't ask for a better carer.\""
+          - generic [ref=e191]:
+            - img "Margaret Thompson" [ref=e193]
+            - generic [ref=e194]:
+              - paragraph [ref=e195]: Margaret Thompson
+              - paragraph [ref=e196]: Daughter • Manchester
+        - generic [ref=e198]:
+          - img [ref=e200]
+          - generic [ref=e203]:
+            - img [ref=e204]
+            - img [ref=e206]
+            - img [ref=e208]
+            - img [ref=e210]
+            - img [ref=e212]
+          - paragraph [ref=e214]: "\"The matching process was seamless and we found the perfect carer for my father. He's so much happier staying in his own home with professional support.\""
+          - generic [ref=e215]:
+            - img "David Chen" [ref=e217]
+            - generic [ref=e218]:
+              - paragraph [ref=e219]: David Chen
+              - paragraph [ref=e220]: Son • London
+        - generic [ref=e222]:
+          - img [ref=e224]
+          - generic [ref=e227]:
+            - img [ref=e228]
+            - img [ref=e230]
+            - img [ref=e232]
+            - img [ref=e234]
+            - img [ref=e236]
+          - paragraph [ref=e238]: "\"MeddyCare connected us with an experienced dementia carer who truly understands my husband's needs. It's given our family peace of mind.\""
+          - generic [ref=e239]:
+            - img "Emily Roberts" [ref=e241]
+            - generic [ref=e242]:
+              - paragraph [ref=e243]: Emily Roberts
+              - paragraph [ref=e244]: Wife • Birmingham
+      - link "Find Your Perfect Carer" [ref=e246] [cursor=pointer]:
+        - /url: /families/questionnaire
+    - generic [ref=e248]:
+      - generic [ref=e249]:
+        - heading "Why Choose MeddyCare" [level=2] [ref=e250]
+        - paragraph [ref=e251]: Compare MeddyCare with traditional care homes.
+      - generic [ref=e252]:
+        - generic [ref=e253]:
+          - generic [ref=e254]: Feature
+          - generic [ref=e255]: MeddyCare
+          - generic [ref=e256]: Care Home
+        - generic [ref=e257]:
+          - generic [ref=e258]:
+            - generic [ref=e259]: Carer Ratio
+            - generic [ref=e260]: 1 to 1
+            - generic [ref=e261]: 1 to 15+
+          - generic [ref=e262]:
+            - generic [ref=e263]: Stay at Home
+            - img [ref=e265]
+            - generic [ref=e270]: ✗
+          - generic [ref=e271]:
+            - generic [ref=e272]: Keep Pets
+            - img [ref=e274]
+            - generic [ref=e279]: ✗
+          - generic [ref=e280]:
+            - generic [ref=e281]: Couples Stay Together
+            - img [ref=e283]
+            - generic [ref=e288]: Rarely
+          - generic [ref=e289]:
+            - generic [ref=e290]: Flexible Routines
+            - img [ref=e292]
+            - generic [ref=e297]: Limited
+          - generic [ref=e298]:
+            - generic [ref=e299]: Average Cost/Week
+            - generic [ref=e300]: From £950
+            - generic [ref=e301]: £1,200+
+      - link "Get Your Free Quote" [ref=e303] [cursor=pointer]:
+        - /url: /families/questionnaire
+    - generic [ref=e309]:
+      - generic [ref=e310]:
+        - img [ref=e311]
+        - generic [ref=e314]: Limited Time Offer
+      - generic [ref=e315]:
+        - heading "Quality Care from £950/week" [level=2] [ref=e316]
+        - paragraph [ref=e317]: Get 15% off your first month when you book through MeddyCare
+      - generic [ref=e318]:
+        - generic [ref=e319]:
+          - img [ref=e320]
+          - generic [ref=e325]: No Hidden Fees
+        - generic [ref=e326]:
+          - img [ref=e327]
+          - generic [ref=e332]: Cancel Anytime
+        - generic [ref=e333]:
+          - img [ref=e334]
+          - generic [ref=e339]: 24/7 Support
+        - generic [ref=e340]:
+          - img [ref=e341]
+          - generic [ref=e346]: Vetted Carers
+      - link "Get Your Free Quote" [ref=e348] [cursor=pointer]:
+        - /url: /families/questionnaire
+    - generic [ref=e350]:
+      - generic [ref=e351]:
+        - heading "Comprehensive Wellness Support for Seniors" [level=2] [ref=e353]
+        - paragraph [ref=e355]: From everyday assistance to holistic well-being, our services are designed to give families peace of mind while empowering seniors to live life fully at home.
+      - generic [ref=e356]:
+        - generic [ref=e357]:
+          - img "Simplified Appointment Scheduling" [ref=e359]
+          - generic [ref=e360]:
+            - heading "Simplified Appointment Scheduling" [level=3] [ref=e361]
+            - paragraph [ref=e362]: Never miss an important consultation again. Our easy booking system ensures seniors and families can plan care effortlessly.
+            - button "Learn More" [ref=e364]
+        - generic [ref=e366]:
+          - img "Health & Wellness Tracking" [ref=e368]
+          - generic [ref=e369]:
+            - heading "Health & Wellness Tracking" [level=3] [ref=e370]
+            - paragraph [ref=e371]: Stay updated with daily mood logs, activity records, and personalized wellness reports helping you stay proactive about well-being.
+            - button "Learn More" [ref=e373]
+        - generic [ref=e375]:
+          - img "Tailored Care Plans" [ref=e377]
+          - generic [ref=e378]:
+            - heading "Tailored Care Plans" [level=3] [ref=e379]
+            - paragraph [ref=e380]: Every person is unique. Our professionals design care programs that balance health needs with lifestyle preferences.
+            - button "Learn More" [ref=e382]
+    - generic [ref=e385]:
+      - heading "How It Works – With Care & Comfort" [level=2] [ref=e386]
+      - generic [ref=e387]:
+        - generic [ref=e388]:
+          - generic [ref=e389]: "01"
+          - img [ref=e390]
+          - heading "Tailored support" [level=3] [ref=e394]
+          - paragraph [ref=e395]: Your loved one receives dedicated, one-to-one care shaped around their personal needs and lifestyle, every day of the week.
+        - generic [ref=e396]:
+          - generic [ref=e397]: "02"
+          - img [ref=e398]
+          - heading "Enhanced wellbeing" [level=3] [ref=e401]
+          - paragraph [ref=e402]: Staying at home helps maintain independence, familiar routines, and bonds. Nearly all families notice a clear improvement in quality of life.
+        - generic [ref=e403]:
+          - generic [ref=e404]: "03"
+          - img [ref=e405]
+          - heading "Safer environment" [level=3] [ref=e408]
+          - paragraph [ref=e409]: A move to a care facility can bring stress and higher risks. Remaining in a familiar home setting cuts the chance of serious falls by half.
+        - generic [ref=e410]:
+          - generic [ref=e411]: "04"
+          - img [ref=e412]
+          - heading "Perfect Carer Match" [level=3] [ref=e415]
+          - paragraph [ref=e416]: We carefully match your loved one with the carer who best fits their personality and preferences.
+    - generic [ref=e418]:
+      - heading "Frequently Asked Questions" [level=2] [ref=e419]
+      - generic [ref=e420]:
+        - heading "What services does MeddyCare provide?" [level=3] [ref=e422]:
+          - button "What services does MeddyCare provide?" [ref=e423]:
+            - text: What services does MeddyCare provide?
+            - img [ref=e424]
+        - heading "How do you ensure the safety of seniors?" [level=3] [ref=e427]:
+          - button "How do you ensure the safety of seniors?" [ref=e428]:
+            - text: How do you ensure the safety of seniors?
+            - img [ref=e429]
+        - heading "Can the care plan be customized?" [level=3] [ref=e432]:
+          - button "Can the care plan be customized?" [ref=e433]:
+            - text: Can the care plan be customized?
+            - img [ref=e434]
+        - heading "Do you provide medical support as well?" [level=3] [ref=e437]:
+          - button "Do you provide medical support as well?" [ref=e438]:
+            - text: Do you provide medical support as well?
+            - img [ref=e439]
+        - heading "How can I get started with MeddyCare?" [level=3] [ref=e442]:
+          - button "How can I get started with MeddyCare?" [ref=e443]:
+            - text: How can I get started with MeddyCare?
+            - img [ref=e444]
+    - generic [ref=e446]:
+      - img "Care background" [ref=e448]
+      - generic [ref=e450]:
+        - heading "Caring is a promise of dignity. Our local carers are here to help." [level=2] [ref=e451]
+        - paragraph [ref=e452]: Our local carers know the community and are ready to help.
+        - link "Start Care Now" [ref=e453] [cursor=pointer]:
+          - /url: /families/questionnaire
+        - generic [ref=e454]:
+          - link [ref=e455] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e456]
+          - link [ref=e458] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e459]
+          - link [ref=e461] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e462]
+  - contentinfo [ref=e464]:
+    - generic [ref=e465]:
+      - generic [ref=e466]:
+        - generic [ref=e467]:
+          - link "MeddyCare Logo MeddyCare" [ref=e468] [cursor=pointer]:
+            - /url: /
+            - img "MeddyCare Logo" [ref=e469]
+            - generic [ref=e470]: MeddyCare
+          - generic [ref=e471]:
+            - heading "Legal" [level=3] [ref=e472]
+            - paragraph [ref=e473]: MeddyCare is an introductory agency connecting families with self-employed carers. We are not CQC regulated as we do not provide care directly.
+        - generic [ref=e474]:
+          - heading "Company" [level=3] [ref=e475]
+          - list [ref=e476]:
+            - listitem [ref=e477]:
+              - link "About Us" [ref=e478] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e479]:
+              - link "For Families" [ref=e480] [cursor=pointer]:
+                - /url: /get-care
+            - listitem [ref=e481]:
+              - link "Carer" [ref=e482] [cursor=pointer]:
+                - /url: /become-a-carer
+            - listitem [ref=e483]:
+              - link "Contact Us" [ref=e484] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=e485]:
+              - link "Insights & Advice" [ref=e486] [cursor=pointer]:
+                - /url: /blog
+        - generic [ref=e487]:
+          - heading "Our Office" [level=3] [ref=e488]
+          - generic [ref=e489]:
+            - generic [ref=e490]:
+              - img [ref=e491]
+              - generic [ref=e493]: Monday to Sunday (Open 24/7)
+            - generic [ref=e494]:
+              - img [ref=e495]
+              - generic [ref=e497]: 5917 Rowsgate Ln Wilmington, NC 28411,
+            - generic [ref=e498]:
+              - img [ref=e499]
+              - generic [ref=e501]: 0118 989 9970
+            - generic [ref=e502]:
+              - img [ref=e503]
+              - generic [ref=e505]: hello@meddycare.com
+        - generic [ref=e506]:
+          - heading "Get Our Daily Newsletter" [level=3] [ref=e507]
+          - generic [ref=e508]:
+            - textbox "Enter your email" [ref=e509]
+            - button "Subscribe" [ref=e510]
+          - generic [ref=e511]:
+            - heading "Our awards" [level=4] [ref=e512]
+            - img "Awards and certifications" [ref=e513]
+      - generic [ref=e515]:
+        - generic [ref=e516]:
+          - link "Terms And Condition" [ref=e517] [cursor=pointer]:
+            - /url: /terms
+          - link "Customer Privacy Policy" [ref=e518] [cursor=pointer]:
+            - /url: /privacy
+        - paragraph [ref=e519]: © Copyright meddycare 2025
+  - button "Open Next.js Dev Tools" [ref=e525] [cursor=pointer]:
+    - img [ref=e526]
+```

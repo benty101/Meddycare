@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from "react";
 import { TestimonialCard } from "./testimonial-card";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -89,11 +91,10 @@ const TestimonialsCarousel = React.forwardRef<
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  index === currentIndex
+                className={`w-2 h-2 rounded-full transition-all ${index === currentIndex
                     ? "bg-(--brand-purple) w-8"
                     : "bg-gray-300"
-                }`}
+                  }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
             ))}

@@ -1,3 +1,5 @@
+'use client';
+
 import { ClipboardCheck, Users, Video, HeartHandshake } from 'lucide-react';
 
 export function HowItWorks() {

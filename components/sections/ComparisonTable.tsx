@@ -1,3 +1,5 @@
+'use client';
+
 import { Check, X, HelpCircle } from 'lucide-react';
 
 export function ComparisonTable() {

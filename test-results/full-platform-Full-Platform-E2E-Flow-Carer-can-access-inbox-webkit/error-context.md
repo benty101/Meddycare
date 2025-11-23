@@ -1,0 +1,145 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [ref=e5]:
+    - generic [ref=e6]: "Limited Offer: Get 15% off your first month • Quality care from £950/week"
+    - generic [ref=e8]: "Limited Offer: Get 15% off your first month • Quality care from £950/week"
+    - generic [ref=e10]: "Limited Offer: Get 15% off your first month • Quality care from £950/week"
+    - generic [ref=e12]: "Limited Offer: Get 15% off your first month • Quality care from £950/week"
+  - banner [ref=e14]:
+    - generic [ref=e16]:
+      - link "MeddyCare Logo MeddyCare" [ref=e17]:
+        - /url: /
+        - img "MeddyCare Logo" [ref=e18]
+        - generic [ref=e19]: MeddyCare
+      - navigation [ref=e20]:
+        - link "About us" [ref=e21]:
+          - /url: /about
+        - link "For Families" [ref=e22]:
+          - /url: /get-care
+        - link "Carer" [ref=e23]:
+          - /url: /become-a-carer
+        - link "Insights & Advice" [ref=e24]:
+          - /url: /blog
+      - generic [ref=e25]:
+        - link "Call us 0118 989 9970" [ref=e26]:
+          - /url: tel:01189899970
+          - img [ref=e27]
+          - generic [ref=e29]:
+            - generic [ref=e30]: Call us
+            - generic [ref=e31]: 0118 989 9970
+        - link "Sign in" [ref=e32]:
+          - /url: /login
+        - link "Find a Carer" [ref=e33]:
+          - /url: /get-care
+  - main [ref=e34]:
+    - generic [ref=e35]:
+      - link "Back to selection" [ref=e36]:
+        - /url: /login
+        - img [ref=e37]
+        - text: Back to selection
+      - generic [ref=e39]:
+        - heading "Carer Portal" [level=1] [ref=e40]
+        - paragraph [ref=e41]: Sign in to manage your schedule, view placements, and update your profile.
+      - generic [ref=e42]:
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - text: Email Address
+            - generic [ref=e45]:
+              - generic:
+                - img
+              - textbox "Email Address" [active] [ref=e46]:
+                - /placeholder: you@example.com
+          - generic [ref=e47]:
+            - text: Password
+            - generic [ref=e48]:
+              - generic:
+                - img
+              - textbox "Password" [ref=e49]:
+                - /placeholder: ••••••••
+                - text: password123
+              - button [ref=e50]:
+                - img [ref=e51]
+          - generic [ref=e54]:
+            - generic [ref=e55]:
+              - checkbox "Remember me" [ref=e56]
+              - generic [ref=e57]: Remember me
+            - link "Forgot password?" [ref=e58]:
+              - /url: /forgot-password
+          - button "Sign In" [ref=e59]
+          - generic [ref=e64]: Or continue with
+          - generic [ref=e65]:
+            - button "Google" [ref=e66]:
+              - img [ref=e67]
+              - text: Google
+            - button "Facebook" [ref=e72]:
+              - img [ref=e73]
+              - text: Facebook
+        - paragraph [ref=e76]:
+          - text: Don't have an account?
+          - link "Apply Now" [ref=e77]:
+            - /url: /become-a-carer
+  - contentinfo [ref=e78]:
+    - generic [ref=e79]:
+      - generic [ref=e80]:
+        - generic [ref=e81]:
+          - link "MeddyCare Logo MeddyCare" [ref=e82]:
+            - /url: /
+            - img "MeddyCare Logo" [ref=e83]
+            - generic [ref=e84]: MeddyCare
+          - generic [ref=e85]:
+            - heading "Legal" [level=3] [ref=e86]
+            - paragraph [ref=e87]: MeddyCare is an introductory agency connecting families with self-employed carers. We are not CQC regulated as we do not provide care directly.
+        - generic [ref=e88]:
+          - heading "Company" [level=3] [ref=e89]
+          - list [ref=e90]:
+            - listitem [ref=e91]:
+              - link "About Us" [ref=e92]:
+                - /url: /about
+            - listitem [ref=e93]:
+              - link "For Families" [ref=e94]:
+                - /url: /get-care
+            - listitem [ref=e95]:
+              - link "Carer" [ref=e96]:
+                - /url: /become-a-carer
+            - listitem [ref=e97]:
+              - link "Contact Us" [ref=e98]:
+                - /url: /contact
+            - listitem [ref=e99]:
+              - link "Insights & Advice" [ref=e100]:
+                - /url: /blog
+        - generic [ref=e101]:
+          - heading "Our Office" [level=3] [ref=e102]
+          - generic [ref=e103]:
+            - generic [ref=e104]:
+              - img [ref=e105]
+              - generic [ref=e107]: Monday to Sunday (Open 24/7)
+            - generic [ref=e108]:
+              - img [ref=e109]
+              - generic [ref=e111]: 5917 Rowsgate Ln Wilmington, NC 28411,
+            - generic [ref=e112]:
+              - img [ref=e113]
+              - generic [ref=e115]: 0118 989 9970
+            - generic [ref=e116]:
+              - img [ref=e117]
+              - generic [ref=e119]: hello@meddycare.com
+        - generic [ref=e120]:
+          - heading "Get Our Daily Newsletter" [level=3] [ref=e121]
+          - generic [ref=e122]:
+            - textbox "Enter your email" [ref=e123]
+            - button "Subscribe" [ref=e124]
+          - generic [ref=e125]:
+            - heading "Our awards" [level=4] [ref=e126]
+            - img "Awards and certifications" [ref=e127]
+      - generic [ref=e129]:
+        - generic [ref=e130]:
+          - link "Terms And Condition" [ref=e131]:
+            - /url: /terms
+          - link "Customer Privacy Policy" [ref=e132]:
+            - /url: /privacy
+        - paragraph [ref=e133]: © Copyright meddycare 2025
+  - button "Open Next.js Dev Tools" [ref=e139] [cursor=pointer]:
+    - img [ref=e140]
+  - alert [ref=e145]
+```
