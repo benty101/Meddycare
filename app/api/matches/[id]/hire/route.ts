@@ -8,7 +8,7 @@ import { getUserFromToken } from '@/lib/auth';
  */
 export async function POST(
     req: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
         const authHeader = req.headers.get('authorization');
@@ -19,7 +19,7 @@ export async function POST(
             return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
         }
 
-        const matchId = params.id;
+        const { id: matchId } = await params;
 
         // Get the match and related data
         const match = await prisma.match.findUnique({

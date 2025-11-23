@@ -4,7 +4,7 @@ import { getUserFromToken } from '@/lib/auth';
 
 export async function GET(
     req: NextRequest,
-    { params }: { params: { userId: string } }
+    { params }: { params: Promise<{ userId: string }> }
 ) {
     try {
         const authHeader = req.headers.get('authorization');
@@ -15,13 +15,13 @@ export async function GET(
             return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
         }
 
-        const otherUserId = params.userId;
+        const { userId: otherUserId } = await params;
 
         const messages = await prisma.message.findMany({
             where: {
                 OR: [
-                    { senderId: userData.userId, receiverId: otherUserId },
-                    { senderId: otherUserId, receiverId: userData.userId }
+                    { senderId: userData.userId, recipientId: otherUserId },
+                    { senderId: otherUserId, recipientId: userData.userId }
                 ]
             },
             orderBy: {

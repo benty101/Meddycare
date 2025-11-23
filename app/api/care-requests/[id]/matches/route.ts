@@ -7,10 +7,10 @@ import { prisma } from '@/lib/prisma';
  */
 export async function GET(
     req: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const careRequestId = params.id;
+        const { id: careRequestId } = await params;
 
         const matches = await prisma.match.findMany({
             where: { careRequestId },

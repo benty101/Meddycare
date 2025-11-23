@@ -1,60 +1,59 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { signUp } from '@/lib/supabase-auth';
 import { prisma } from '@/lib/prisma';
-import { hashPassword, createToken, generateVerificationToken, hashToken, setAuthCookie } from '@/lib/auth';
-import { sendVerificationEmail } from '@/lib/email';
 import { registerSchema } from '@/lib/validation';
 
 export async function POST(req: NextRequest) {
     try {
         const body = await req.json();
 
-        // Validate request body
+        // Validate body
         const validation = registerSchema.safeParse(body);
         if (!validation.success) {
-            return NextResponse.json(
-                { error: 'Validation failed', details: validation.error.issues },
-                { status: 400 }
-            );
+            return NextResponse.json({ error: validation.error.issues }, { status: 400 });
         }
 
-        const { email, password, role, firstName, lastName, phone, postcode } = validation.data;
+        const { email, password, role, firstName, lastName, phone, postcode } = body;
 
-        // Check if user already exists
-        const existingUser = await prisma.user.findUnique({
-            where: { email },
+        // Check if user already exists in Prisma (to avoid Supabase call if possible)
+        const existingUser = await prisma.user.findUnique({ where: { email } });
+        if (existingUser) {
+            return NextResponse.json({ error: 'User already exists' }, { status: 400 });
+        }
+
+        // Sign up with Supabase Auth
+        const { user } = await signUp(email, password, {
+            firstName,
+            lastName,
+            role,
+            phone,
+            postcode,
         });
 
-        if (existingUser) {
+        if (!user || !user.id) {
             return NextResponse.json(
-                { error: 'Email already registered' },
-                { status: 400 }
+                { error: 'Failed to create user in Supabase' },
+                { status: 500 }
             );
         }
 
-        // Hash password
-        const passwordHash = await hashPassword(password);
-
-        // Generate verification token
-        const verificationToken = generateVerificationToken();
-        const hashedToken = await hashToken(verificationToken);
-
-        // Create user and profile in transaction
-        const result = await prisma.$transaction(async (tx: any) => {
-            // Create user
-            const user = await tx.user.create({
+        // Create User and Profile in Prisma
+        await prisma.$transaction(async (tx) => {
+            // Create User
+            const newUser = await tx.user.create({
                 data: {
                     email,
-                    passwordHash,
+                    supabaseAuthId: user.id,
                     role,
-                    emailVerified: false, // Will be verified via email
-                },
+                    emailVerified: false,
+                    // passwordHash is optional now
+                }
             });
 
-            // Create role-specific profile
             if (role === 'family') {
                 await tx.family.create({
                     data: {
-                        userId: user.id,
+                        userId: newUser.id,
                         firstName,
                         lastName,
                         phone,
@@ -62,94 +61,35 @@ export async function POST(req: NextRequest) {
                     },
                 });
             } else if (role === 'carer') {
-                // Map experience string to integer if provided
-                let yearsExp = body.yearsExperience || 0;
-                if (typeof body.experience === 'string') {
-                    if (body.experience === "1-3 years") yearsExp = 2;
-                    else if (body.experience === "3-5 years") yearsExp = 4;
-                    else if (body.experience === "5-10 years") yearsExp = 7;
-                    else if (body.experience === "10+ years") yearsExp = 10;
-                }
-
-                const carer = await tx.carer.create({
+                await tx.carer.create({
                     data: {
-                        userId: user.id,
+                        userId: newUser.id,
                         firstName,
                         lastName,
                         phone,
                         postcode,
-                        yearsExperience: yearsExp,
-                        bio: body.bio || null,
-                        status: 'pending', // Requires admin approval
+                        yearsExperience: 0,
+                        status: 'pending',
                     },
                 });
-
-                // Create specializations if provided
-                if (body.specializations && Array.isArray(body.specializations)) {
-                    for (const spec of body.specializations) {
-                        const s = spec.toLowerCase();
-                        let specEnum = null;
-
-                        if (s.includes('dementia')) specEnum = 'dementia';
-                        else if (s.includes('palliative')) specEnum = 'palliative';
-                        else if (s.includes('mobility')) specEnum = 'mobility_support';
-                        else if (s.includes('autism')) specEnum = 'autism';
-                        else if (s.includes('learning')) specEnum = 'learning_disabilities';
-                        else if (s.includes('elderly')) specEnum = 'elderly_care';
-                        else if (s.includes('post') && s.includes('surgery')) specEnum = 'post_surgery';
-                        else if (s.includes('special') && s.includes('needs')) specEnum = 'special_needs';
-
-                        if (specEnum) {
-                            await tx.carerSpecialization.create({
-                                data: {
-                                    carerId: carer.id,
-                                    specialization: specEnum as any,
-                                }
-                            });
-                        }
-                    }
-                }
             }
-
-            // Store verification token (you may want to create a separate table for this)
-            // For now, we'll send it via email and verify directly
-            // In production, store hashedToken with expiry in a VerificationToken table
-
-            return user;
         });
 
-        // Send verification email
-        await sendVerificationEmail(
-            email,
-            firstName,
-            verificationToken
-        );
-
-        // Create JWT token (user can log in but some features require verification)
-        const token = await createToken(result.id, result.email, result.role);
-
-        // Create response with auth cookie
-        const response = NextResponse.json({
+        return NextResponse.json({
             success: true,
             message: 'Registration successful! Please check your email to verify your account.',
             user: {
-                id: result.id,
-                email: result.email,
-                role: result.role,
-                emailVerified: result.emailVerified,
+                id: user.id,
+                email: user.email,
+                role,
             },
         }, { status: 201 });
 
-        setAuthCookie(response, token);
-
-        return response;
-
-    } catch (error) {
+    } catch (error: any) {
         console.error('Registration error:', error);
         return NextResponse.json(
-            { error: 'Internal server error. Please try again later.' },
+            { error: error.message || 'Internal server error' },
             { status: 500 }
         );
     }
 }
-

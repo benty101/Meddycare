@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import { MapPin, Star } from 'lucide-react';
 
@@ -91,13 +93,13 @@ export function CarerProfileCarousel() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="mb-4">
                 <p className="text-sm text-gray-600 font-inter line-clamp-3">
                   {carer.testimonial}
                 </p>
               </div>
-              
+
               <div className="pt-4 border-t border-gray-100">
                 <p className="text-sm font-urbanist font-semibold text-brand-purple">
                   {carer.experience} experience

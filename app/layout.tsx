@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Poppins, Urbanist, Sora, Manrope } from "next/font/google";
 import "./globals.css";
+import { AuthProvider } from "./providers/auth-provider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -46,7 +47,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${poppins.variable} ${urbanist.variable} ${sora.variable} ${manrope.variable} font-sans antialiased`}
       >
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

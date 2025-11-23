@@ -1,3 +1,5 @@
+'use client';
+
 import { MapPin, Users, Briefcase } from 'lucide-react';
 
 const locations = [
@@ -39,7 +41,7 @@ export function LocationCards() {
                   {location.city}
                 </h3>
               </div>
-              
+
               <div className="space-y-3">
                 <div className="flex items-center gap-2 text-gray-600">
                   <Users className="w-5 h-5 text-brand-purple" />
@@ -52,7 +54,7 @@ export function LocationCards() {
                   <span className="text-sm font-urbanist">{location.opportunities}</span>
                 </div>
               </div>
-              
+
               <button className="mt-4 w-full px-4 py-2 bg-brand-purple-subtle text-brand-purple rounded-full font-urbanist font-semibold hover:bg-brand-purple hover:text-white transition-all">
                 View Opportunities
               </button>

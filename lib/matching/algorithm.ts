@@ -202,10 +202,10 @@ export async function findMatches(
     for (const carer of carers) {
         // Calculate individual scores
         const locationScore = calculateLocationScore(
-            careRequest.family.lat,
-            careRequest.family.lng,
-            carer.lat,
-            carer.lng
+            careRequest.family.lat ? Number(careRequest.family.lat) : null,
+            careRequest.family.lng ? Number(careRequest.family.lng) : null,
+            carer.lat ? Number(carer.lat) : null,
+            carer.lng ? Number(carer.lng) : null
         );
 
         // Extract specialization needs from recipient

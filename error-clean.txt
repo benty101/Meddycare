@@ -1,0 +1,44 @@
+﻿   Γû▓ Next.js 16.0.3 (Turbopack)
+   - Environments: .env
+
+   Creating an optimized production build ...
+node.exe : 
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (:  
+  String) [], RemoteExc   
+ eption
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+> Build error occurred
+Error: Turbopack build 
+failed with 1 errors:
+./components/sections
+Invalid import
+'client-only' cannot be 
+imported from a Server 
+Component module. It 
+should only be used from 
+a Client Component.
+The error was caused by 
+using 'styled-jsx'. It 
+only works in a Client 
+Component but none of its 
+parents are marked with 
+"use client", so they're 
+Server Components by 
+default.
+
+
+
+    at ignore-listed 
+frames

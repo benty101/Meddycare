@@ -1,90 +1,66 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { signIn } from '@/lib/supabase-auth';
 import { prisma } from '@/lib/prisma';
-import { verifyPassword, createToken, setAuthCookie } from '@/lib/auth';
 import { loginSchema } from '@/lib/validation';
 
 export async function POST(req: NextRequest) {
     try {
         const body = await req.json();
 
-        // Validate request body
         const validation = loginSchema.safeParse(body);
         if (!validation.success) {
+            return NextResponse.json({ error: validation.error.issues }, { status: 400 });
+        }
+
+        const { email, password } = body;
+
+        const { session, user } = await signIn(email, password);
+
+        if (!session || !user) {
             return NextResponse.json(
-                { error: 'Validation failed', details: validation.error.issues },
-                { status: 400 }
+                { error: 'Invalid credentials' },
+                { status: 401 }
             );
         }
 
-        const { email, password } = validation.data;
-
-        // Find user
-        const user = await prisma.user.findUnique({
-            where: { email },
-            include: {
-                family: true,
-                carer: true,
-            },
+        // Get user role from database
+        let dbUser = await prisma.user.findUnique({
+            where: { supabaseAuthId: user.id },
+            select: { role: true, id: true },
         });
 
-        if (!user) {
-            return NextResponse.json(
-                { error: 'Invalid email or password' },
-                { status: 401 }
-            );
+        if (!dbUser) {
+            // Fallback for migration: try finding by email and update supabaseAuthId
+            const existingUser = await prisma.user.findUnique({ where: { email } });
+            if (existingUser) {
+                dbUser = await prisma.user.update({
+                    where: { id: existingUser.id },
+                    data: { supabaseAuthId: user.id },
+                    select: { role: true, id: true }
+                });
+            } else {
+                return NextResponse.json({ error: 'User record not found' }, { status: 404 });
+            }
         }
 
-        // Verify password
-        const isValid = await verifyPassword(password, user.passwordHash);
-        if (!isValid) {
-            return NextResponse.json(
-                { error: 'Invalid email or password' },
-                { status: 401 }
-            );
-        }
-
-        // Get user profile data
-        let profile = null;
-        if (user.role === 'family' && user.family) {
-            profile = {
-                firstName: user.family.firstName,
-                lastName: user.family.lastName,
-                phone: user.family.phone,
-            };
-        } else if (user.role === 'carer' && user.carer) {
-            profile = {
-                firstName: user.carer.firstName,
-                lastName: user.carer.lastName,
-                phone: user.carer.phone,
-                status: user.carer.status,
-            };
-        }
-
-        // Create JWT token
-        const token = await createToken(user.id, user.email, user.role);
-
-        // Create response with auth cookie
-        const response = NextResponse.json({
+        return NextResponse.json({
             success: true,
-            message: 'Login successful',
             user: {
                 id: user.id,
                 email: user.email,
-                role: user.role,
-                emailVerified: user.emailVerified,
-                profile,
+                role: dbUser.role,
+            },
+            session: {
+                access_token: session.access_token,
+                refresh_token: session.refresh_token,
             },
         });
 
-        setAuthCookie(response, token);
-
-        return response;
-
-    } catch (error) {
+    } catch (error: any) {
         console.error('Login error:', error);
         return NextResponse.json(
-            { error: 'Internal server error. Please try again later.' },
-            { status: 500 }
+            { error: error.message || 'Internal server error' },
+            { status: 401 }
         );
     }
 }
