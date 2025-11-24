@@ -773,6 +773,15 @@ html {
   box-shadow: 0 0 30px rgba(91, 127, 237, 0.4);
 }
 
+/* Scrollbar Hide Utility */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
 

@@ -58,12 +58,7 @@ export function CarerProfileCarousel() {
   return (
     <section className="py-12 bg-white border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-          <style jsx>{`
-            div::-webkit-scrollbar {
-              display: none;
-            }
-          `}</style>
+        <div className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
           {featuredCarers.map((carer, index) => (
             <div
               key={index}
