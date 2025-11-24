@@ -34,17 +34,17 @@ const TrustBar = React.forwardRef<HTMLDivElement, TrustBarProps>(
       {
         icon: Shield,
         label: "CQC Registered",
-        color: "text-(--brand-purple-500)",
+        color: "text-[var(--brand-purple-500)]",
       },
       {
         icon: CheckCircle,
         label: "Fully Insured",
-        color: "text-(--accent-success)",
+        color: "text-[var(--accent-success)]",
       },
       {
         icon: Clock,
         label: "24/7 Support",
-        color: "text-(--brand-purple-500)",
+        color: "text-[var(--brand-purple-500)]",
       },
     ];
 
@@ -67,7 +67,7 @@ const TrustBar = React.forwardRef<HTMLDivElement, TrustBarProps>(
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <item.icon className={cn("w-5 h-5", item.color)} />
-              <span className="label-md text-(--text-primary) whitespace-nowrap">
+              <span className="label-md text-[var(--text-primary)] whitespace-nowrap">
                 {item.label}
               </span>
             </div>

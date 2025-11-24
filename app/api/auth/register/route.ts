@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({ error: validation.error.issues }, { status: 400 });
         }
 
-        const { email, password, role, firstName, lastName, phone, postcode } = body;
+        const { email, password, role, firstName, lastName, phone, postcode, address } = body;
 
         // Check if user already exists in Prisma (to avoid Supabase call if possible)
         const existingUser = await prisma.user.findUnique({ where: { email } });
@@ -58,6 +58,7 @@ export async function POST(req: NextRequest) {
                         lastName,
                         phone,
                         postcode,
+                        address: address || '',
                     },
                 });
             } else if (role === 'carer') {
@@ -68,6 +69,7 @@ export async function POST(req: NextRequest) {
                         lastName,
                         phone,
                         postcode,
+                        address: address || '',
                         yearsExperience: 0,
                         status: 'pending',
                     },

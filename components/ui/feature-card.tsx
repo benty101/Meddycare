@@ -12,10 +12,10 @@ export interface FeatureCardProps {
 const FeatureCard = React.forwardRef<HTMLDivElement, FeatureCardProps>(
   ({ icon, title, description, variant = "default", className }, ref) => {
     const variantStyles = {
-      default: "bg-white border-2 border-(--bg-peach)",
-      purple: "bg-(--bg-light-purple)",
-      peach: "bg-(--bg-peach)",
-      teal: "bg-(--bg-teal)",
+      default: "bg-white border-2 border-[var(--bg-peach)]",
+      purple: "bg-[var(--bg-light-purple)]",
+      peach: "bg-[var(--bg-peach)]",
+      teal: "bg-[var(--bg-teal)]",
     };
 
     return (
@@ -31,15 +31,15 @@ const FeatureCard = React.forwardRef<HTMLDivElement, FeatureCardProps>(
         {/* Icon */}
         {icon && (
           <div className="w-14 h-14 rounded-full bg-purple-100 flex items-center justify-center">
-            <div className="text-(--brand-purple)">{icon}</div>
+            <div className="text-[var(--brand-purple)]">{icon}</div>
           </div>
         )}
 
         {/* Title */}
-        <h3 className="heading-sm text-(--text-primary)">{title}</h3>
+        <h3 className="heading-sm text-[var(--text-primary)]">{title}</h3>
 
         {/* Description */}
-        <p className="body-md text-(--text-muted)">{description}</p>
+        <p className="body-md text-[var(--text-muted)]">{description}</p>
       </div>
     );
   }

@@ -8,16 +8,60 @@ import { Mail, Lock, Eye, EyeOff, ArrowLeft } from 'lucide-react';
 
 export default function FamilyLoginPage() {
     const [showPassword, setShowPassword] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
     const [formData, setFormData] = useState({
         email: '',
         password: '',
         remember: false
     });
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Handle login logic here
-        console.log('Family Login attempt:', formData);
+        setIsLoading(true);
+        setError(null);
+
+        try {
+            const response = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: formData.email,
+                    password: formData.password,
+                    role: 'family'
+                })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                const errorMessage = data.error || 'Login failed';
+                setError(typeof errorMessage === 'string' ? errorMessage : 'Invalid email or password');
+                setIsLoading(false);
+                return;
+            }
+
+            if (data.token) {
+                localStorage.setItem('token', data.token);
+            }
+
+            if (data.user) {
+                localStorage.setItem('user', JSON.stringify(data.user));
+            }
+
+            if (formData.remember) {
+                localStorage.setItem('rememberedEmail', formData.email);
+            } else {
+                localStorage.removeItem('rememberedEmail');
+            }
+
+            window.location.href = '/dashboard/family';
+
+        } catch (error: any) {
+            console.error('Login error:', error);
+            setError('Network error. Please check your connection and try again.');
+            setIsLoading(false);
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,6 +99,11 @@ export default function FamilyLoginPage() {
 
                     <div className="bg-white rounded-3xl p-8 shadow-xl shadow-purple-900/5 border border-slate-100">
                         <form onSubmit={handleSubmit} className="space-y-6">
+                            {error && (
+                                <div className="p-3 bg-red-50 border border-red-200 text-red-600 rounded-lg text-sm">
+                                    {error}
+                                </div>
+                            )}
                             {/* Email Field */}
                             <div className="space-y-2">
                                 <label htmlFor="email" className="font-bold text-slate-700 text-sm">
@@ -134,9 +183,10 @@ export default function FamilyLoginPage() {
                             {/* Submit Button */}
                             <button
                                 type="submit"
-                                className="w-full btn-primary py-4 text-lg shadow-lg shadow-purple-200"
+                                disabled={isLoading}
+                                className="w-full btn-primary py-4 text-lg shadow-lg shadow-purple-200 disabled:opacity-70 disabled:cursor-not-allowed"
                             >
-                                Sign In
+                                {isLoading ? 'Signing In...' : 'Sign In'}
                             </button>
 
                             {/* Divider */}

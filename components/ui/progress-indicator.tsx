@@ -19,7 +19,7 @@ const ProgressIndicator = React.forwardRef<
       {/* Progress Bar */}
       <div className="relative h-2 bg-gray-100 rounded-full overflow-hidden">
         <div
-          className="absolute top-0 left-0 h-full bg-(--brand-purple) rounded-full transition-all duration-500 ease-out"
+          className="absolute top-0 left-0 h-full bg-[var(--brand-purple)] rounded-full transition-all duration-500 ease-out"
           style={{ width: `${progress}%` }}
         />
       </div>
@@ -33,10 +33,10 @@ const ProgressIndicator = React.forwardRef<
               className={cn(
                 "flex-1 text-center transition-colors",
                 index === currentStep
-                  ? "text-(--brand-purple)"
+                  ? "text-[var(--brand-purple)]"
                   : index < currentStep
-                  ? "text-gray-600"
-                  : "text-gray-400"
+                    ? "text-gray-600"
+                    : "text-gray-400"
               )}
             >
               <div className="text-sm font-urbanist font-semibold">
@@ -55,7 +55,7 @@ const ProgressIndicator = React.forwardRef<
       {/* Simple Step Counter */}
       {!steps && (
         <div className="mt-3 text-center">
-          <span className="text-sm font-urbanist font-semibold text-(--brand-purple)">
+          <span className="text-sm font-urbanist font-semibold text-[var(--brand-purple)]">
             Step {currentStep + 1} of {totalSteps}
           </span>
         </div>

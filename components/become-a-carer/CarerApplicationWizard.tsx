@@ -19,6 +19,7 @@ export default function CarerApplicationWizard() {
         password: "",
         phone: "",
         postcode: "",
+        address: "",
         experience: "",
         specializations: [],
         certifications: [],
@@ -44,42 +45,97 @@ export default function CarerApplicationWizard() {
         }
     };
 
+    const validateCurrentStep = (): boolean => {
+        switch (currentStep) {
+            case 0: // Basic Info
+                return !!(
+                    formData.firstName &&
+                    formData.lastName &&
+                    formData.email &&
+                    formData.password &&
+                    formData.phone &&
+                    formData.postcode &&
+                    formData.address
+                );
+            case 1: // Experience
+                return !!(formData.experience && formData.specializations.length > 0);
+            case 2: // Qualifications
+                return !!(formData.certifications.length > 0 && formData.driving);
+            case 3: // Profile
+                return !!(formData.bio && formData.bio.length >= 50);
+            default:
+                return false;
+        }
+    };
+
     const handleSubmit = async () => {
         setIsSubmitting(true);
+        console.log('Submitting form with data:', formData);
+
         try {
+            const payload = {
+                role: 'carer',
+                email: formData.email,
+                password: formData.password,
+                firstName: formData.firstName,
+                lastName: formData.lastName,
+                phone: formData.phone,
+                postcode: formData.postcode,
+                address: formData.address,
+                experience: formData.experience,
+                specializations: formData.specializations,
+                certifications: formData.certifications,
+                bio: formData.bio
+            };
+
+            console.log('Sending payload:', payload);
+
             const response = await fetch('/api/auth/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    role: 'carer',
-                    email: formData.email,
-                    password: formData.password,
-                    firstName: formData.firstName,
-                    lastName: formData.lastName,
-                    phone: formData.phone,
-                    postcode: formData.postcode,
-                    experience: formData.experience,
-                    specializations: formData.specializations,
-                    certifications: formData.certifications,
-                    bio: formData.bio
-                })
+                body: JSON.stringify(payload)
             });
 
+            console.log('Response status:', response.status);
+            const data = await response.json();
+            console.log('Response data:', data);
+
             if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.error || 'Registration failed');
+                // Handle error response with detailed messaging
+                let errorMessage = 'Registration failed';
+
+                if (Array.isArray(data.error)) {
+                    // Zod validation errors
+                    errorMessage = data.error.map((err: any) => `${err.path?.join('.')}: ${err.message}`).join('\n');
+                } else if (typeof data.error === 'string') {
+                    errorMessage = data.error;
+                } else if (data.message) {
+                    errorMessage = data.message;
+                }
+
+                console.error('API Error:', errorMessage);
+                alert(`Registration Error:\n\n${errorMessage}`);
+                setIsSubmitting(false);
+                return;
             }
 
-            const data = await response.json();
+            // Success! Store token if provided
             if (data.token) {
                 localStorage.setItem('token', data.token);
             }
 
+            console.log('Registration successful!');
+            // Show success state
             setIsComplete(true);
-        } catch (error) {
-            console.error(error);
-            alert("Something went wrong. Please try again.");
-        } finally {
+
+            // Redirect after short delay
+            setTimeout(() => {
+                window.location.href = '/dashboard/carer';
+            }, 2000);
+
+        } catch (error: any) {
+            console.error('Submission error:', error);
+            alert(`Network error: ${error.message || 'Unable to submit application. Please check your connection and try again.'}`);
             setIsSubmitting(false);
         }
     };
@@ -118,7 +174,7 @@ export default function CarerApplicationWizard() {
                 onBack={handleBack}
                 onNext={handleNext}
                 nextLabel={currentStep === CARER_STEPS.length - 1 ? 'Submit Application' : 'Continue'}
-                isNextDisabled={false}
+                isNextDisabled={!validateCurrentStep()}
                 isLoading={isSubmitting}
                 title={CARER_STEPS[currentStep].title}
                 subtitle={CARER_STEPS[currentStep].description}

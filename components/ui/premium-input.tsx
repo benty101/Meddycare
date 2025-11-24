@@ -25,7 +25,7 @@ const PremiumInput = React.forwardRef<HTMLInputElement, PremiumInputProps>(
               className={cn(
                 "absolute left-4 transition-all duration-200 pointer-events-none font-urbanist",
                 isFocused || hasValue
-                  ? "top-2 text-xs font-semibold text-(--brand-purple)"
+                  ? "top-2 text-xs font-semibold text-[var(--brand-purple)]"
                   : "top-1/2 -translate-y-1/2 text-base text-gray-500"
               )}
             >
@@ -50,7 +50,7 @@ const PremiumInput = React.forwardRef<HTMLInputElement, PremiumInputProps>(
               icon ? "pl-12 pr-4" : "px-4",
               error
                 ? "border-red-300 focus:border-red-500"
-                : "border-gray-200 focus:border-(--brand-purple)",
+                : "border-gray-200 focus:border-[var(--brand-purple)]",
               "text-gray-900 font-inter text-base",
               "placeholder:text-gray-400",
               className

@@ -75,7 +75,7 @@ export default function Home() {
 
       <main>
         {/* Hero Section */}
-        <section className="bg-(--bg-purple-light) py-20 lg:py-28 relative overflow-hidden">
+        <section className="bg-[var(--bg-purple-light)] py-20 lg:py-28 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Left Content */}
@@ -86,11 +86,11 @@ export default function Home() {
                   </span>
                 </div>
 
-                <h1 className="heading-hero text-(--text-primary)">
-                  Search <span className="text-(--brand-purple)">and connect</span> with trusted live-in carers
+                <h1 className="heading-hero text-[var(--text-primary)]">
+                  Search <span className="text-[var(--brand-purple)]">and connect</span> with trusted live-in carers
                 </h1>
 
-                <p className="body-xl text-(--text-secondary) max-w-xl">
+                <p className="body-xl text-[var(--text-secondary)] max-w-xl">
                   We have connected over 5,000 families with professional, self-employed carers across the UK.
                   Share your needs, explore your options, and choose the right carer for your loved one.
                 </p>
@@ -113,7 +113,7 @@ export default function Home() {
                         <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                       ))}
                     </div>
-                    <span className="body-sm font-urbanist font-semibold text-(--text-secondary)">
+                    <span className="body-sm font-urbanist font-semibold text-[var(--text-secondary)]">
                       Excellent 4.9/5 from 778 reviews
                     </span>
                   </div>
@@ -123,17 +123,17 @@ export default function Home() {
               {/* Right Image Collage */}
               <ScaleIn className="relative h-[600px]" delay={0.2}>
                 {/* Decorative arrows */}
-                <svg className="absolute top-8 right-32 w-32 h-32 text-(--accent-pink) opacity-60" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="3">
+                <svg className="absolute top-8 right-32 w-32 h-32 text-[var(--accent-pink)] opacity-60" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="3">
                   <path d="M20,80 Q50,20 80,60" />
                   <path d="M75,55 L80,60 L75,65" />
                 </svg>
-                <svg className="absolute bottom-12 right-8 w-24 h-24 text-(--accent-pink) opacity-60" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="3">
+                <svg className="absolute bottom-12 right-8 w-24 h-24 text-[var(--accent-pink)] opacity-60" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="3">
                   <path d="M80,20 Q50,80 20,40" />
                   <path d="M25,35 L20,40 L25,45" />
                 </svg>
 
                 {/* Main large circle - top right */}
-                <div className="absolute top-0 right-0 w-96 h-96 rounded-full overflow-hidden border-4 border-(--brand-purple-light) shadow-xl">
+                <div className="absolute top-0 right-0 w-96 h-96 rounded-full overflow-hidden border-4 border-[var(--brand-purple-light)] shadow-xl">
                   <Image
                     src="https://images.unsplash.com/photo-1763257470686-0fa348ebe11a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTAwNDR8MHwxfHNlYXJjaHw4fHxlbGRlcmx5JTIwd29tYW4lMjBjYXJlZ2l2ZXIlMjBzbWlsaW5nJTIwb3V0ZG9vcnxlbnwwfDJ8fHwxNzYzNTQ2MTg4fDA&ixlib=rb-4.1.0&q=85"
                     alt="Elderly woman and younger caregiver smiling together outdoors - Quan Jing on Unsplash"
@@ -146,7 +146,7 @@ export default function Home() {
                 </div>
 
                 {/* Small circle - bottom left */}
-                <div className="absolute bottom-32 left-0 w-48 h-48 rounded-full overflow-hidden border-4 border-(--brand-purple-subtle) shadow-lg">
+                <div className="absolute bottom-32 left-0 w-48 h-48 rounded-full overflow-hidden border-4 border-[var(--brand-purple-subtle)] shadow-lg">
                   <Image
                     src="https://images.pexels.com/photos/5638700/pexels-photo-5638700.jpeg"
                     alt="Multi-generational family gathering outdoors - Askar Abayev on Pexels"
@@ -159,7 +159,7 @@ export default function Home() {
                 </div>
 
                 {/* Medium circle - middle bottom */}
-                <div className="absolute bottom-0 left-32 w-64 h-64 rounded-full overflow-hidden border-4 border-(--brand-purple-subtle) shadow-lg">
+                <div className="absolute bottom-0 left-32 w-64 h-64 rounded-full overflow-hidden border-4 border-[var(--brand-purple-subtle)] shadow-lg">
                   <Image
                     src="https://images.unsplash.com/photo-1763257470686-0fa348ebe11a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTAwNDR8MHwxfHNlYXJjaHwxfHxlbGRlcmx5JTIwd2hlZWxjaGFpciUyMGNhcmVnaXZlciUyMG91dGRvb3J8ZW58MHwyfHx8MTc2MzU0NjE4OHww&ixlib=rb-4.1.0&q=85"
                     alt="Elderly person in wheelchair with caregiver - Quan Jing on Unsplash"
@@ -176,49 +176,49 @@ export default function Home() {
         </section>
 
         {/* Trust Indicators */}
-        <section className="py-12 bg-white border-y border-(--border-light)">
+        <section className="py-12 bg-white border-y border-[var(--border-light)]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-wrap justify-center items-center gap-12">
               <div className="flex items-center gap-2">
                 <CheckCircleIcon width={24} height={24} color="var(--accent-success)" />
-                <span className="label-lg text-(--text-secondary)">DBS Checked</span>
+                <span className="label-lg text-[var(--text-secondary)]">DBS Checked</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircleIcon width={24} height={24} color="var(--accent-success)" />
-                <span className="label-lg text-(--text-secondary)">Fully Insured</span>
+                <span className="label-lg text-[var(--text-secondary)]">Fully Insured</span>
               </div>
               <div className="flex items-center gap-2">
                 <Star className="w-6 h-6 fill-yellow-400 text-yellow-400" />
-                <span className="label-lg text-(--text-secondary)">Trustpilot 4.9/5</span>
+                <span className="label-lg text-[var(--text-secondary)]">Trustpilot 4.9/5</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircleIcon width={24} height={24} color="var(--accent-success)" />
-                <span className="label-lg text-(--text-secondary)">24/7 Support</span>
+                <span className="label-lg text-[var(--text-secondary)]">24/7 Support</span>
               </div>
             </div>
           </div>
         </section>
 
         {/* Why Choose Us */}
-        <section className="py-20 bg-(--bg-gray)">
+        <section className="py-20 bg-[var(--bg-gray)]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="heading-xl mb-4">
-                Why Choose <span className="text-(--brand-purple)">MeddyCare</span>
+                Why Choose <span className="text-[var(--brand-purple)]">MeddyCare</span>
               </h2>
-              <p className="body-lg text-(--text-secondary) max-w-2xl mx-auto">
+              <p className="body-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
                 Trusted by families, recognized by experts. We provide the highest standard of care.
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
               {/* Card 1 */}
-              <ScaleIn delay={0.1} className="card-elevated space-y-6 bg-gradient-to-br from-white to-(--bg-purple-light)">
-                <div className="w-14 h-14 rounded-2xl bg-(--brand-purple) flex items-center justify-center">
+              <ScaleIn delay={0.1} className="card-elevated space-y-6 bg-gradient-to-br from-white to-[var(--bg-purple-light)]">
+                <div className="w-14 h-14 rounded-2xl bg-[var(--brand-purple)] flex items-center justify-center">
                   <CheckCircleIcon width={32} height={32} color="white" />
                 </div>
-                <h3 className="heading-md text-(--text-primary)">Vetted & DBS Checked Carers</h3>
-                <p className="body-md text-(--text-secondary)">
+                <h3 className="heading-md text-[var(--text-primary)]">Vetted & DBS Checked Carers</h3>
+                <p className="body-md text-[var(--text-secondary)]">
                   All our carers are thoroughly vetted and DBS checked, ensuring safety and peace of mind for you
                   and your loved ones.
                 </p>
@@ -226,23 +226,23 @@ export default function Home() {
 
               {/* Card 2 */}
               <ScaleIn delay={0.2} className="card-elevated space-y-6">
-                <div className="w-14 h-14 rounded-2xl bg-(--accent-success) flex items-center justify-center">
+                <div className="w-14 h-14 rounded-2xl bg-[var(--accent-success)] flex items-center justify-center">
                   <CheckCircleIcon width={32} height={32} color="white" />
                 </div>
-                <h3 className="heading-md text-(--text-primary)">Verified Carers</h3>
-                <p className="body-md text-(--text-secondary)">
+                <h3 className="heading-md text-[var(--text-primary)]">Verified Carers</h3>
+                <p className="body-md text-[var(--text-secondary)]">
                   We carefully verify every carer before connecting them with you. This ensures you get reliable,
                   safe, and professional support.
                 </p>
               </ScaleIn>
 
               {/* Card 3 */}
-              <ScaleIn delay={0.3} className="card-elevated space-y-6 bg-gradient-to-br from-white to-(--bg-purple-light)">
-                <div className="w-14 h-14 rounded-2xl bg-(--brand-purple) flex items-center justify-center">
+              <ScaleIn delay={0.3} className="card-elevated space-y-6 bg-gradient-to-br from-white to-[var(--bg-purple-light)]">
+                <div className="w-14 h-14 rounded-2xl bg-[var(--brand-purple)] flex items-center justify-center">
                   <TrendingUpIcon width={32} height={32} color="white" />
                 </div>
-                <h3 className="heading-md text-(--text-primary)">Carer-Set Rates</h3>
-                <p className="body-md text-(--text-secondary)">
+                <h3 className="heading-md text-[var(--text-primary)]">Carer-Set Rates</h3>
+                <p className="body-md text-[var(--text-secondary)]">
                   Each carer sets their own rates, giving you the freedom to find the right match for your care
                   needs and budget.
                 </p>
@@ -256,7 +256,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               {/* Left Image */}
-              <div className="rounded-3xl overflow-hidden shadow-xl border-2 border-(--brand-purple-light)">
+              <div className="rounded-3xl overflow-hidden shadow-xl border-2 border-[var(--brand-purple-light)]">
                 <Image
                   src="/steps-image.jpg"
                   alt="Elderly woman with caregiver"
@@ -271,9 +271,9 @@ export default function Home() {
               <div className="space-y-12">
                 <div className="space-y-6">
                   <h2 className="heading-xl">
-                    <span className="text-(--brand-purple)">3 Simple Steps</span> to Start Care
+                    <span className="text-[var(--brand-purple)]">3 Simple Steps</span> to Start Care
                   </h2>
-                  <p className="body-lg text-(--text-secondary)">
+                  <p className="body-lg text-[var(--text-secondary)]">
                     Care made simple — share your needs, meet carers, and start with confidence.
                   </p>
                 </div>
@@ -281,42 +281,42 @@ export default function Home() {
                 <div className="space-y-6">
                   {/* Step 1 */}
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-(--brand-purple) flex items-center justify-center">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--brand-purple)] flex items-center justify-center">
                       <span className="heading-sm text-white">1</span>
                     </div>
                     <div className="space-y-2 flex-1">
-                      <h3 className="heading-sm text-(--text-primary)">Request Care Easily</h3>
-                      <p className="body-md text-(--text-secondary)">
+                      <h3 className="heading-sm text-[var(--text-primary)]">Request Care Easily</h3>
+                      <p className="body-md text-[var(--text-secondary)]">
                         Fill out a quick form to share what kind of support you're looking for,
                         so we can understand your exact needs.
                       </p>
-                      <div className="h-px bg-(--border-light) mt-4"></div>
+                      <div className="h-px bg-[var(--border-light)] mt-4"></div>
                     </div>
                   </div>
 
                   {/* Step 2 */}
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-(--brand-purple) flex items-center justify-center">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--brand-purple)] flex items-center justify-center">
                       <span className="heading-sm text-white">2</span>
                     </div>
                     <div className="space-y-2 flex-1">
-                      <h3 className="heading-sm text-(--text-primary)">Get Matched Quickly</h3>
-                      <p className="body-md text-(--text-secondary)">
+                      <h3 className="heading-sm text-[var(--text-primary)]">Get Matched Quickly</h3>
+                      <p className="body-md text-[var(--text-secondary)]">
                         Within 24 hours, you'll receive tailored carer profiles. Chat with them or
                         set up a call to find the right fit.
                       </p>
-                      <div className="h-px bg-(--border-light) mt-4"></div>
+                      <div className="h-px bg-[var(--border-light)] mt-4"></div>
                     </div>
                   </div>
 
                   {/* Step 3 */}
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-(--brand-purple) flex items-center justify-center">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--brand-purple)] flex items-center justify-center">
                       <span className="heading-sm text-white">3</span>
                     </div>
                     <div className="space-y-2 flex-1">
-                      <h3 className="heading-sm text-(--text-primary)">Start Care Smoothly</h3>
-                      <p className="body-md text-(--text-secondary)">
+                      <h3 className="heading-sm text-[var(--text-primary)]">Start Care Smoothly</h3>
+                      <p className="body-md text-[var(--text-secondary)]">
                         Use MyElder to stay in touch, manage your care plan, and make payments safely and securely.
                       </p>
                     </div>
@@ -332,13 +332,13 @@ export default function Home() {
         </section>
 
         {/* Testimonials Section - Replaces Carer Carousel */}
-        <section className="py-20 bg-(--bg-gray)">
+        <section className="py-20 bg-[var(--bg-gray)]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="heading-xl mb-4">
-                Trusted by <span className="text-(--brand-purple)">Families Like Yours</span>
+                Trusted by <span className="text-[var(--brand-purple)]">Families Like Yours</span>
               </h2>
-              <p className="body-lg text-(--text-secondary) max-w-2xl mx-auto">
+              <p className="body-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
                 Hear from families who have found peace of mind with our trusted carers.
               </p>
             </div>
@@ -364,20 +364,20 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="heading-xl mb-4">
-                Why Choose <span className="text-(--brand-purple)">MeddyCare</span>
+                Why Choose <span className="text-[var(--brand-purple)]">MeddyCare</span>
               </h2>
-              <p className="body-lg text-(--text-secondary) max-w-2xl mx-auto">
+              <p className="body-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
                 Compare MeddyCare with traditional care homes.
               </p>
             </div>
 
-            <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-(--border-light)">
+            <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-[var(--border-light)]">
               <div className="grid grid-cols-3 gradient-purple text-white p-6">
                 <div className="font-urbanist font-bold text-lg">Feature</div>
                 <div className="text-center font-urbanist font-bold text-lg">MeddyCare</div>
                 <div className="text-center font-urbanist font-bold text-lg opacity-80">Care Home</div>
               </div>
-              <div className="divide-y divide-(--border-light)">
+              <div className="divide-y divide-[var(--border-light)]">
                 {[
                   { feature: "Carer Ratio", meddycare: "1 to 1", careHome: "1 to 15+" },
                   { feature: "Stay at Home", meddycare: "✓", careHome: "✗" },
@@ -386,16 +386,16 @@ export default function Home() {
                   { feature: "Flexible Routines", meddycare: "✓", careHome: "Limited" },
                   { feature: "Average Cost/Week", meddycare: "From £950", careHome: "£1,200+" }
                 ].map((row, i) => (
-                  <div key={i} className="grid grid-cols-3 p-6 hover:bg-(--bg-gray) transition-colors">
-                    <div className="font-urbanist font-semibold text-(--text-primary)">{row.feature}</div>
+                  <div key={i} className="grid grid-cols-3 p-6 hover:bg-[var(--bg-gray)] transition-colors">
+                    <div className="font-urbanist font-semibold text-[var(--text-primary)]">{row.feature}</div>
                     <div className="text-center">
                       {row.meddycare === "✓" ? (
                         <CheckCircleIcon width={24} height={24} color="var(--accent-success)" className="mx-auto" />
                       ) : (
-                        <span className="font-urbanist font-bold text-(--brand-purple)">{row.meddycare}</span>
+                        <span className="font-urbanist font-bold text-[var(--brand-purple)]">{row.meddycare}</span>
                       )}
                     </div>
-                    <div className="text-center text-(--text-muted) font-urbanist">{row.careHome}</div>
+                    <div className="text-center text-[var(--text-muted)] font-urbanist">{row.careHome}</div>
                   </div>
                 ))}
               </div>
@@ -451,7 +451,7 @@ export default function Home() {
               <div className="pt-6">
                 <Link
                   href="/families/questionnaire"
-                  className="inline-block px-10 py-4 bg-white text-(--brand-purple) rounded-full font-urbanist font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-2xl"
+                  className="inline-block px-10 py-4 bg-white text-[var(--brand-purple)] rounded-full font-urbanist font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-2xl"
                 >
                   Get Your Free Quote
                 </Link>
@@ -466,11 +466,11 @@ export default function Home() {
             <div className="grid lg:grid-cols-2 gap-12 mb-16">
               <div>
                 <h2 className="heading-xl">
-                  Comprehensive Wellness <span className="text-(--brand-purple)">Support for Seniors</span>
+                  Comprehensive Wellness <span className="text-[var(--brand-purple)]">Support for Seniors</span>
                 </h2>
               </div>
               <div className="flex items-center">
-                <p className="body-lg text-(--text-secondary)">
+                <p className="body-lg text-[var(--text-secondary)]">
                   From everyday assistance to holistic well-being, our services are designed to give families
                   peace of mind while empowering seniors to live life fully at home.
                 </p>
@@ -480,7 +480,7 @@ export default function Home() {
             <div className="grid md:grid-cols-3 gap-10">
               {/* Service Card 1 */}
               <div className="space-y-6 group">
-                <div className="rounded-3xl overflow-hidden border-2 border-(--border-purple) group-hover:border-(--brand-purple) transition-all shadow-md group-hover:shadow-xl">
+                <div className="rounded-3xl overflow-hidden border-2 border-[var(--border-purple)] group-hover:border-[var(--brand-purple)] transition-all shadow-md group-hover:shadow-xl">
                   <Image
                     src="/service-appointment.jpg"
                     alt="Simplified Appointment Scheduling"
@@ -491,25 +491,25 @@ export default function Home() {
                   />
                 </div>
                 <div className="space-y-3">
-                  <h3 className="heading-md text-(--brand-purple)">
+                  <h3 className="heading-md text-[var(--brand-purple)]">
                     Simplified Appointment Scheduling
                   </h3>
-                  <p className="body-md text-(--text-secondary)">
+                  <p className="body-md text-[var(--text-secondary)]">
                     Never miss an important consultation again. Our easy booking system ensures seniors and
                     families can plan care effortlessly.
                   </p>
                   <div className="pt-1">
-                    <button className="label-lg text-(--text-primary) hover:text-(--brand-purple) transition-colors">
+                    <button className="label-lg text-[var(--text-primary)] hover:text-[var(--brand-purple)] transition-colors">
                       Learn More
                     </button>
-                    <div className="w-20 h-0.5 bg-(--text-primary) mt-1"></div>
+                    <div className="w-20 h-0.5 bg-[var(--text-primary)] mt-1"></div>
                   </div>
                 </div>
               </div>
 
               {/* Service Card 2 */}
               <div className="space-y-6 group">
-                <div className="rounded-3xl overflow-hidden border-2 border-(--border-purple) group-hover:border-(--brand-purple) transition-all shadow-md group-hover:shadow-xl">
+                <div className="rounded-3xl overflow-hidden border-2 border-[var(--border-purple)] group-hover:border-[var(--brand-purple)] transition-all shadow-md group-hover:shadow-xl">
                   <Image
                     src="/service-wellness.jpg"
                     alt="Health & Wellness Tracking"
@@ -520,25 +520,25 @@ export default function Home() {
                   />
                 </div>
                 <div className="space-y-3">
-                  <h3 className="heading-md text-(--brand-purple)">
+                  <h3 className="heading-md text-[var(--brand-purple)]">
                     Health & Wellness Tracking
                   </h3>
-                  <p className="body-md text-(--text-secondary)">
+                  <p className="body-md text-[var(--text-secondary)]">
                     Stay updated with daily mood logs, activity records, and personalized wellness reports
                     helping you stay proactive about well-being.
                   </p>
                   <div className="pt-1">
-                    <button className="label-lg text-(--text-primary) hover:text-(--brand-purple) transition-colors">
+                    <button className="label-lg text-[var(--text-primary)] hover:text-[var(--brand-purple)] transition-colors">
                       Learn More
                     </button>
-                    <div className="w-20 h-0.5 bg-(--text-primary) mt-1"></div>
+                    <div className="w-20 h-0.5 bg-[var(--text-primary)] mt-1"></div>
                   </div>
                 </div>
               </div>
 
               {/* Service Card 3 */}
               <div className="space-y-6 group">
-                <div className="rounded-3xl overflow-hidden border-2 border-(--border-purple) group-hover:border-(--brand-purple) transition-all shadow-md group-hover:shadow-xl">
+                <div className="rounded-3xl overflow-hidden border-2 border-[var(--border-purple)] group-hover:border-[var(--brand-purple)] transition-all shadow-md group-hover:shadow-xl">
                   <Image
                     src="/service-care-plans.png"
                     alt="Tailored Care Plans"
@@ -549,18 +549,18 @@ export default function Home() {
                   />
                 </div>
                 <div className="space-y-3">
-                  <h3 className="heading-md text-(--brand-purple)">
+                  <h3 className="heading-md text-[var(--brand-purple)]">
                     Tailored Care Plans
                   </h3>
-                  <p className="body-md text-(--text-secondary)">
+                  <p className="body-md text-[var(--text-secondary)]">
                     Every person is unique. Our professionals design care programs that balance health needs
                     with lifestyle preferences.
                   </p>
                   <div className="pt-1">
-                    <button className="label-lg text-(--text-primary) hover:text-(--brand-purple) transition-colors">
+                    <button className="label-lg text-[var(--text-primary)] hover:text-[var(--brand-purple)] transition-colors">
                       Learn More
                     </button>
-                    <div className="w-20 h-0.5 bg-(--text-primary) mt-1"></div>
+                    <div className="w-20 h-0.5 bg-[var(--text-primary)] mt-1"></div>
                   </div>
                 </div>
               </div>
@@ -569,23 +569,23 @@ export default function Home() {
         </section>
 
         {/* How It Works */}
-        <section className="py-20 bg-(--bg-gray)">
+        <section className="py-20 bg-[var(--bg-gray)]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="heading-xl text-center mb-16">
-              How It Works – <span className="text-(--brand-purple)">With Care & Comfort</span>
+              How It Works – <span className="text-[var(--brand-purple)]">With Care & Comfort</span>
             </h2>
 
             <div className="grid md:grid-cols-2 gap-8">
               {/* Card 1 */}
               <div className="relative card-elevated space-y-6">
-                <div className="absolute top-8 right-8 text-[109px] font-sora font-bold text-(--brand-purple-subtle) leading-none">
+                <div className="absolute top-8 right-8 text-[109px] font-sora font-bold text-[var(--brand-purple-subtle)] leading-none">
                   01
                 </div>
                 <ClipboardIcon width={50} height={64} color="var(--brand-purple)" />
-                <h3 className="heading-md text-(--text-primary) relative z-10">
+                <h3 className="heading-md text-[var(--text-primary)] relative z-10">
                   Tailored support
                 </h3>
-                <p className="body-md text-(--text-secondary) relative z-10">
+                <p className="body-md text-[var(--text-secondary)] relative z-10">
                   Your loved one receives dedicated, one-to-one care shaped around their personal needs
                   and lifestyle, every day of the week.
                 </p>
@@ -593,14 +593,14 @@ export default function Home() {
 
               {/* Card 2 */}
               <div className="relative card-elevated space-y-6">
-                <div className="absolute top-8 right-8 text-[109px] font-sora font-bold text-(--brand-purple-subtle) leading-none">
+                <div className="absolute top-8 right-8 text-[109px] font-sora font-bold text-[var(--brand-purple-subtle)] leading-none">
                   02
                 </div>
                 <HandsHeartIcon width={53} height={51} color="var(--brand-purple)" />
-                <h3 className="heading-md text-(--text-primary) relative z-10">
+                <h3 className="heading-md text-[var(--text-primary)] relative z-10">
                   Enhanced wellbeing
                 </h3>
-                <p className="body-md text-(--text-secondary) relative z-10">
+                <p className="body-md text-[var(--text-secondary)] relative z-10">
                   Staying at home helps maintain independence, familiar routines, and bonds. Nearly all families
                   notice a clear improvement in quality of life.
                 </p>
@@ -608,14 +608,14 @@ export default function Home() {
 
               {/* Card 3 */}
               <div className="relative card-elevated space-y-6">
-                <div className="absolute top-8 right-8 text-[109px] font-sora font-bold text-(--brand-purple-subtle) leading-none">
+                <div className="absolute top-8 right-8 text-[109px] font-sora font-bold text-[var(--brand-purple-subtle)] leading-none">
                   03
                 </div>
                 <RefreshIcon width={48} height={48} color="var(--brand-purple)" />
-                <h3 className="heading-md text-(--text-primary) relative z-10">
+                <h3 className="heading-md text-[var(--text-primary)] relative z-10">
                   Safer environment
                 </h3>
-                <p className="body-md text-(--text-secondary) relative z-10">
+                <p className="body-md text-[var(--text-secondary)] relative z-10">
                   A move to a care facility can bring stress and higher risks. Remaining in a familiar home
                   setting cuts the chance of serious falls by half.
                 </p>
@@ -623,14 +623,14 @@ export default function Home() {
 
               {/* Card 4 */}
               <div className="relative card-elevated space-y-6">
-                <div className="absolute top-8 right-8 text-[109px] font-sora font-bold text-(--brand-purple-subtle) leading-none">
+                <div className="absolute top-8 right-8 text-[109px] font-sora font-bold text-[var(--brand-purple-subtle)] leading-none">
                   04
                 </div>
                 <UserCheckIcon width={45} height={59} color="var(--brand-purple)" />
-                <h3 className="heading-md text-(--text-primary) relative z-10">
+                <h3 className="heading-md text-[var(--text-primary)] relative z-10">
                   Perfect Carer Match
                 </h3>
-                <p className="body-md text-(--text-secondary) relative z-10">
+                <p className="body-md text-[var(--text-secondary)] relative z-10">
                   We carefully match your loved one with the carer who best fits their personality and preferences.
                 </p>
               </div>
@@ -642,7 +642,7 @@ export default function Home() {
         <section className="py-20 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="heading-xl text-center mb-16">
-              Frequently <span className="text-(--brand-purple)">Asked Questions</span>
+              Frequently <span className="text-[var(--brand-purple)]">Asked Questions</span>
             </h2>
 
             <Accordion type="single" collapsible className="space-y-4">
@@ -650,12 +650,12 @@ export default function Home() {
                 <AccordionItem
                   key={index}
                   value={`item-${index}`}
-                  className="bg-(--bg-gray) rounded-3xl px-6 border border-(--border-light)"
+                  className="bg-[var(--bg-gray)] rounded-3xl px-6 border border-[var(--border-light)]"
                 >
-                  <AccordionTrigger className="heading-sm text-(--brand-purple) hover:no-underline py-6">
+                  <AccordionTrigger className="heading-sm text-[var(--brand-purple)] hover:no-underline py-6">
                     {item.question}
                   </AccordionTrigger>
-                  <AccordionContent className="body-md text-(--text-secondary) pb-6">
+                  <AccordionContent className="body-md text-[var(--text-secondary)] pb-6">
                     {item.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -674,7 +674,7 @@ export default function Home() {
               className="object-cover"
               sizes="100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-(--brand-purple-dark)/80 via-(--brand-purple)/90 to-(--brand-purple-dark)"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-[var(--brand-purple-dark)]/80 via-[var(--brand-purple)]/90 to-[var(--brand-purple-dark)]"></div>
           </div>
 
           <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
@@ -684,7 +684,7 @@ export default function Home() {
             <p className="text-xl font-inter text-white/90">
               Our local carers know the community and are ready to help.
             </p>
-            <Link href="/families/questionnaire" className="inline-block px-8 py-4 bg-white text-(--brand-purple) rounded-full text-base font-sora font-bold hover:bg-gray-100 transition-colors shadow-xl">
+            <Link href="/families/questionnaire" className="inline-block px-8 py-4 bg-white text-[var(--brand-purple)] rounded-full text-base font-sora font-bold hover:bg-gray-100 transition-colors shadow-xl">
               Start Care Now
             </Link>
 

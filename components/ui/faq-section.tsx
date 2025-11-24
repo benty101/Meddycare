@@ -29,7 +29,7 @@ const FAQSection = React.forwardRef<HTMLDivElement, FAQSectionProps>(
               {title && (
                 <h2 className="heading-lg text-center mb-4">
                   {title.split(' ').map((word, i) => (
-                    <span key={i} className={i % 2 === 1 ? "text-(--brand-purple)" : ""}>
+                    <span key={i} className={i % 2 === 1 ? "text-[var(--brand-purple)]" : ""}>
                       {word}{' '}
                     </span>
                   ))}
@@ -47,9 +47,9 @@ const FAQSection = React.forwardRef<HTMLDivElement, FAQSectionProps>(
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="bg-white rounded-2xl px-6 border-2 border-gray-100 hover:border-(--brand-purple) transition-colors"
+                className="bg-white rounded-2xl px-6 border-2 border-gray-100 hover:border-[var(--brand-purple)] transition-colors"
               >
-                <AccordionTrigger className="heading-xs text-(--brand-purple) hover:no-underline py-6 text-left">
+                <AccordionTrigger className="heading-xs text-[var(--brand-purple)] hover:no-underline py-6 text-left">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="body-md text-gray-600 pb-6 leading-relaxed">

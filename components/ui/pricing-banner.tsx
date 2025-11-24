@@ -63,7 +63,7 @@ const PricingBanner = React.forwardRef<HTMLDivElement, PricingBannerProps>(
             <div className="pt-6">
               <a
                 href="/get-care"
-                className="inline-block px-10 py-4 bg-white text-(--brand-purple) rounded-full font-urbanist font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-2xl"
+                className="inline-block px-10 py-4 bg-white text-[var(--brand-purple)] rounded-full font-urbanist font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-2xl"
               >
                 Get Your Free Quote
               </a>

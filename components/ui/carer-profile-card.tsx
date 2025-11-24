@@ -21,7 +21,7 @@ const CarerProfileCard = React.forwardRef<HTMLDivElement, CarerProfileCardProps>
         ref={ref}
         className={cn(
           "bg-white rounded-2xl p-6 shadow-sm border border-gray-100",
-          "hover:shadow-xl hover:border-(--brand-purple) transition-all duration-300",
+          "hover:shadow-xl hover:border-[var(--brand-purple)] transition-all duration-300",
           "group cursor-pointer",
           className
         )}
@@ -30,7 +30,7 @@ const CarerProfileCard = React.forwardRef<HTMLDivElement, CarerProfileCardProps>
         <div className="flex items-start gap-4 mb-4">
           {/* Avatar */}
           {avatar ? (
-            <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-purple-100 group-hover:ring-(--brand-purple) transition-all">
+            <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-purple-100 group-hover:ring-[var(--brand-purple)] transition-all">
               <Image
                 src={avatar}
                 alt={name}
@@ -39,7 +39,7 @@ const CarerProfileCard = React.forwardRef<HTMLDivElement, CarerProfileCardProps>
               />
             </div>
           ) : (
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center flex-shrink-0 ring-2 ring-purple-100 group-hover:ring-(--brand-purple) transition-all">
+            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center flex-shrink-0 ring-2 ring-purple-100 group-hover:ring-[var(--brand-purple)] transition-all">
               <span className="text-2xl font-urbanist font-bold text-white">
                 {name.charAt(0)}
               </span>
@@ -48,7 +48,7 @@ const CarerProfileCard = React.forwardRef<HTMLDivElement, CarerProfileCardProps>
 
           {/* Info */}
           <div className="flex-1 min-w-0">
-            <h3 className="heading-xs text-gray-900 mb-1 group-hover:text-(--brand-purple) transition-colors">
+            <h3 className="heading-xs text-gray-900 mb-1 group-hover:text-[var(--brand-purple)] transition-colors">
               {name}
             </h3>
             <div className="flex items-center gap-3 text-sm text-gray-500 mb-2">
@@ -87,7 +87,7 @@ const CarerProfileCard = React.forwardRef<HTMLDivElement, CarerProfileCardProps>
             {specialties.map((specialty, i) => (
               <span
                 key={i}
-                className="px-3 py-1 bg-purple-50 text-(--brand-purple) rounded-full text-xs font-urbanist font-medium"
+                className="px-3 py-1 bg-purple-50 text-[var(--brand-purple)] rounded-full text-xs font-urbanist font-medium"
               >
                 {specialty}
               </span>

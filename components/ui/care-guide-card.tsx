@@ -24,7 +24,7 @@ const CareGuideCard = React.forwardRef<HTMLDivElement, CareGuideCardProps>(
         <div
           ref={ref}
           className={cn(
-            "group overflow-hidden bg-white rounded-3xl border border-(--border-light) transition-all duration-500 hover-lift",
+            "group overflow-hidden bg-white rounded-3xl border border-[var(--border-light)] transition-all duration-500 hover-lift",
             featured ? "h-full" : "h-full",
             className
           )}
@@ -41,7 +41,7 @@ const CareGuideCard = React.forwardRef<HTMLDivElement, CareGuideCardProps>(
               className="object-cover transition-transform duration-700 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            
+
             {/* Category Badge */}
             <div className="absolute top-6 left-6">
               <span className="badge-primary backdrop-blur-sm">
@@ -53,7 +53,7 @@ const CareGuideCard = React.forwardRef<HTMLDivElement, CareGuideCardProps>(
           {/* Content */}
           <div className={cn("p-8", featured && "p-10")}>
             {/* Meta Info */}
-            <div className="flex items-center gap-4 mb-4 text-(--text-muted)">
+            <div className="flex items-center gap-4 mb-4 text-[var(--text-muted)]">
               <div className="flex items-center gap-1.5">
                 <Calendar className="w-4 h-4" />
                 <span className="body-sm">{date}</span>
@@ -66,25 +66,25 @@ const CareGuideCard = React.forwardRef<HTMLDivElement, CareGuideCardProps>(
 
             {/* Title */}
             <h3 className={cn(
-              "font-playfair font-bold text-(--text-primary) mb-4 group-hover:text-(--brand-purple-600) transition-colors",
+              "font-playfair font-bold text-[var(--text-primary)] mb-4 group-hover:text-[var(--brand-purple-600)] transition-colors",
               featured ? "text-4xl leading-tight" : "heading-md"
             )}>
               {title}
             </h3>
 
             {/* Excerpt */}
-            <p className="body-md text-(--text-secondary) mb-6 line-clamp-3">
+            <p className="body-md text-[var(--text-secondary)] mb-6 line-clamp-3">
               {excerpt}
             </p>
 
             {/* Author & CTA */}
-            <div className="flex items-center justify-between pt-4 border-t border-(--border-light)">
+            <div className="flex items-center justify-between pt-4 border-t border-[var(--border-light)]">
               <div className="flex items-center gap-2">
-                <User className="w-4 h-4 text-(--text-muted)" />
-                <span className="label-md text-(--text-secondary)">{author}</span>
+                <User className="w-4 h-4 text-[var(--text-muted)]" />
+                <span className="label-md text-[var(--text-secondary)]">{author}</span>
               </div>
-              
-              <div className="flex items-center gap-2 text-(--brand-purple-600) group-hover:gap-3 transition-all">
+
+              <div className="flex items-center gap-2 text-[var(--brand-purple-600)] group-hover:gap-3 transition-all">
                 <span className="label-lg">Read More</span>
                 <ArrowRight className="w-5 h-5" />
               </div>

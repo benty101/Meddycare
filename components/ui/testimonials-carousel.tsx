@@ -92,8 +92,8 @@ const TestimonialsCarousel = React.forwardRef<
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`w-2 h-2 rounded-full transition-all ${index === currentIndex
-                    ? "bg-(--brand-purple) w-8"
-                    : "bg-gray-300"
+                  ? "bg-[var(--brand-purple)] w-8"
+                  : "bg-gray-300"
                   }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />

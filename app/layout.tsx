@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     siteName: "MeddyCare",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "MeddyCare - Connecting Families with Carers",
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MeddyCare - Trusted Live-in Care",
     description: "Find vetted, independent live-in carers across the UK.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
     creator: "@meddycare",
   },
   icons: {

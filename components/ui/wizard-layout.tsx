@@ -104,9 +104,9 @@ const WizardLayout = React.forwardRef<HTMLDivElement, WizardLayoutProps>(
                 disabled={isNextDisabled || isLoading}
                 className={cn(
                   "inline-flex items-center gap-2 px-8 py-3 rounded-full",
-                  "bg-(--brand-purple) text-white",
+                  "bg-[var(--brand-purple)] text-white",
                   "font-urbanist font-semibold text-base",
-                  "hover:bg-(--brand-purple-light)",
+                  "hover:bg-[var(--brand-purple-light)]",
                   "transition-all duration-200 transform hover:scale-105",
                   "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100",
                   "shadow-lg"

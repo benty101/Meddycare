@@ -37,18 +37,18 @@ export default function ContactPage() {
 
       <main>
         {/* Hero Section */}
-        <section className="bg-(--bg-light-purple) py-20">
+        <section className="bg-[var(--bg-light-purple)] py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="inline-block mb-6">
-              <span className="px-6 py-2 border-2 border-(--brand-purple) rounded-full label-md text-(--brand-purple)">
+              <span className="px-6 py-2 border-2 border-[var(--brand-purple)] rounded-full label-md text-[var(--brand-purple)]">
                 Get In Touch
               </span>
             </div>
-            <h1 className="heading-xl text-(--text-primary) mb-6">
-              We're Here to <span className="text-(--brand-purple)">Help You</span>
+            <h1 className="heading-xl text-[var(--text-primary)] mb-6">
+              We're Here to <span className="text-[var(--brand-purple)]">Help You</span>
             </h1>
-            <p className="body-lg text-(--text-secondary) max-w-3xl mx-auto">
-              Have questions about our services? Want to discuss your care needs? 
+            <p className="body-lg text-[var(--text-secondary)] max-w-3xl mx-auto">
+              Have questions about our services? Want to discuss your care needs?
               Our team is ready to assist you every step of the way.
             </p>
           </div>
@@ -59,33 +59,33 @@ export default function ContactPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
               {/* Phone */}
-              <div className="bg-(--bg-light-purple) rounded-3xl p-8 text-center space-y-4">
+              <div className="bg-[var(--bg-light-purple)] rounded-3xl p-8 text-center space-y-4">
                 <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center mx-auto">
                   <Phone size={32} color="var(--brand-purple)" />
                 </div>
-                <h3 className="heading-xs text-(--text-primary)">Call Us</h3>
-                <p className="body-sm text-(--text-secondary)">(215) 424-7763</p>
-                <p className="label-sm text-(--text-muted)">Mon-Sun, 24/7</p>
+                <h3 className="heading-xs text-[var(--text-primary)]">Call Us</h3>
+                <p className="body-sm text-[var(--text-secondary)]">(215) 424-7763</p>
+                <p className="label-sm text-[var(--text-muted)]">Mon-Sun, 24/7</p>
               </div>
 
               {/* Email */}
-              <div className="bg-(--bg-peach) rounded-3xl p-8 text-center space-y-4">
+              <div className="bg-[var(--bg-peach)] rounded-3xl p-8 text-center space-y-4">
                 <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center mx-auto">
                   <Mail size={32} color="var(--brand-purple)" />
                 </div>
-                <h3 className="heading-xs text-(--text-primary)">Email Us</h3>
-                <p className="body-sm text-(--text-secondary)">hello@meddycare.com</p>
-                <p className="label-sm text-(--text-muted)">24h response time</p>
+                <h3 className="heading-xs text-[var(--text-primary)]">Email Us</h3>
+                <p className="body-sm text-[var(--text-secondary)]">hello@meddycare.com</p>
+                <p className="label-sm text-[var(--text-muted)]">24h response time</p>
               </div>
 
               {/* Location */}
-              <div className="bg-(--bg-teal) rounded-3xl p-8 text-center space-y-4">
+              <div className="bg-[var(--bg-teal)] rounded-3xl p-8 text-center space-y-4">
                 <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center mx-auto">
                   <MapPin size={32} color="var(--brand-purple)" />
                 </div>
-                <h3 className="heading-xs text-(--text-primary)">Visit Us</h3>
-                <p className="body-sm text-(--text-secondary)">5917 Rowsgate Ln</p>
-                <p className="label-sm text-(--text-muted)">Wilmington, NC 28411</p>
+                <h3 className="heading-xs text-[var(--text-primary)]">Visit Us</h3>
+                <p className="body-sm text-[var(--text-secondary)]">5917 Rowsgate Ln</p>
+                <p className="label-sm text-[var(--text-muted)]">Wilmington, NC 28411</p>
               </div>
 
               {/* Hours */}
@@ -93,16 +93,16 @@ export default function ContactPage() {
                 <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center mx-auto">
                   <Clock size={32} color="var(--brand-purple)" />
                 </div>
-                <h3 className="heading-xs text-(--text-primary)">Open Hours</h3>
-                <p className="body-sm text-(--text-secondary)">24/7 Available</p>
-                <p className="label-sm text-(--text-muted)">Every day of the year</p>
+                <h3 className="heading-xs text-[var(--text-primary)]">Open Hours</h3>
+                <p className="body-sm text-[var(--text-secondary)]">24/7 Available</p>
+                <p className="label-sm text-[var(--text-muted)]">Every day of the year</p>
               </div>
             </div>
           </div>
         </section>
 
         {/* Contact Form Section */}
-        <section className="py-20 bg-(--bg-light-purple)">
+        <section className="py-20 bg-[var(--bg-light-purple)]">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             {submitted ? (
               <div className="bg-white rounded-3xl p-16 text-center space-y-6">
@@ -110,7 +110,7 @@ export default function ContactPage() {
                   <span className="text-4xl">✓</span>
                 </div>
                 <h2 className="heading-lg text-green-600">Message Sent Successfully!</h2>
-                <p className="body-lg text-(--text-secondary) max-w-md mx-auto">
+                <p className="body-lg text-[var(--text-secondary)] max-w-md mx-auto">
                   Thank you for contacting us. Our team will review your message and get back to you within 24 hours.
                 </p>
                 <button
@@ -123,10 +123,10 @@ export default function ContactPage() {
             ) : (
               <div className="bg-white rounded-3xl p-12 space-y-8">
                 <div className="text-center space-y-4">
-                  <h2 className="heading-lg text-(--text-primary)">
-                    Send Us a <span className="text-(--brand-purple)">Message</span>
+                  <h2 className="heading-lg text-[var(--text-primary)]">
+                    Send Us a <span className="text-[var(--brand-purple)]">Message</span>
                   </h2>
-                  <p className="body-md text-(--text-secondary)">
+                  <p className="body-md text-[var(--text-secondary)]">
                     Fill out the form below and we'll get back to you as soon as possible.
                   </p>
                 </div>
@@ -134,7 +134,7 @@ export default function ContactPage() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label className="label-md text-(--text-primary)">Full Name *</label>
+                      <label className="label-md text-[var(--text-primary)]">Full Name *</label>
                       <input
                         required
                         type="text"
@@ -142,12 +142,12 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="John Doe"
-                        className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl label-md text-(--text-primary) focus:outline-none focus:ring-2 focus:ring-(--brand-purple) focus:border-transparent transition-all"
+                        className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl label-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--brand-purple)] focus:border-transparent transition-all"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <label className="label-md text-(--text-primary)">Email Address *</label>
+                      <label className="label-md text-[var(--text-primary)]">Email Address *</label>
                       <input
                         required
                         type="email"
@@ -155,32 +155,32 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="john@example.com"
-                        className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl label-md text-(--text-primary) focus:outline-none focus:ring-2 focus:ring-(--brand-purple) focus:border-transparent transition-all"
+                        className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl label-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--brand-purple)] focus:border-transparent transition-all"
                       />
                     </div>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label className="label-md text-(--text-primary)">Phone Number</label>
+                      <label className="label-md text-[var(--text-primary)]">Phone Number</label>
                       <input
                         type="tel"
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="(215) 424-7763"
-                        className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl label-md text-(--text-primary) focus:outline-none focus:ring-2 focus:ring-(--brand-purple) focus:border-transparent transition-all"
+                        className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl label-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--brand-purple)] focus:border-transparent transition-all"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <label className="label-md text-(--text-primary)">Subject *</label>
+                      <label className="label-md text-[var(--text-primary)]">Subject *</label>
                       <select
                         required
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
-                        className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl label-md text-(--text-primary) focus:outline-none focus:ring-2 focus:ring-(--brand-purple) focus:border-transparent transition-all"
+                        className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl label-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--brand-purple)] focus:border-transparent transition-all"
                       >
                         <option value="">Select a subject</option>
                         <option value="general">General Inquiry</option>
@@ -193,7 +193,7 @@ export default function ContactPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="label-md text-(--text-primary)">Message *</label>
+                    <label className="label-md text-[var(--text-primary)]">Message *</label>
                     <textarea
                       required
                       name="message"
@@ -201,7 +201,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       rows={6}
                       placeholder="Tell us how we can help you..."
-                      className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl label-md text-(--text-primary) focus:outline-none focus:ring-2 focus:ring-(--brand-purple) focus:border-transparent transition-all resize-none"
+                      className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl label-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--brand-purple)] focus:border-transparent transition-all resize-none"
                     />
                   </div>
 
@@ -219,14 +219,14 @@ export default function ContactPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="heading-lg mb-4">
-                Find Us on the <span className="text-(--brand-purple)">Map</span>
+                Find Us on the <span className="text-[var(--brand-purple)]">Map</span>
               </h2>
-              <p className="body-md text-(--text-secondary)">
+              <p className="body-md text-[var(--text-secondary)]">
                 Visit our office or schedule a consultation at our location
               </p>
             </div>
 
-            <div className="rounded-3xl overflow-hidden border-2 border-(--border-purple)">
+            <div className="rounded-3xl overflow-hidden border-2 border-[var(--border-purple)]">
               <iframe
                 src="https://maps.google.com/maps?width=100%25&height=500&hl=en&q=34.1954,-77.8864&t=&z=14&ie=UTF8&iwloc=B&output=embed"
                 width="100%"

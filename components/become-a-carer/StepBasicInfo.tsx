@@ -66,6 +66,27 @@ export default function StepBasicInfo({ data, updateData }: StepBasicInfoProps) 
                     placeholder="e.g. SW1A 1AA"
                     icon={<MapPin className="w-5 h-5" />}
                 />
+
+                <div className="space-y-2">
+                    <label className="block text-sm font-bold text-gray-700">
+                        Full Address
+                    </label>
+                    <div className="relative">
+                        <div className="absolute top-3 left-4 text-gray-400">
+                            <MapPin className="w-5 h-5" />
+                        </div>
+                        <textarea
+                            value={data.address || ""}
+                            onChange={(e) => updateData({ ...data, address: e.target.value })}
+                            placeholder="e.g. 123 Care Street, London"
+                            className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:border-brand-purple focus:ring-1 focus:ring-brand-purple outline-none transition-all min-h-[100px] resize-none"
+                            rows={3}
+                        />
+                    </div>
+                    <p className="text-xs text-gray-500">
+                        Full street address including city
+                    </p>
+                </div>
             </div>
 
             <div className="lg:col-span-1">

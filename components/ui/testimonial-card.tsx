@@ -25,7 +25,7 @@ const TestimonialCard = React.forwardRef<HTMLDivElement, TestimonialCardProps>(
       >
         {/* Quote Icon Background */}
         <div className="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity">
-          <Quote className="w-16 h-16 text-(--brand-purple)" />
+          <Quote className="w-16 h-16 text-[var(--brand-purple)]" />
         </div>
 
         {/* Rating */}
@@ -44,14 +44,14 @@ const TestimonialCard = React.forwardRef<HTMLDivElement, TestimonialCardProps>(
         )}
 
         {/* Quote */}
-        <p className="body-md text-(--text-secondary) mb-6 leading-relaxed italic relative z-10">
+        <p className="body-md text-[var(--text-secondary)] mb-6 leading-relaxed italic relative z-10">
           "{quote}"
         </p>
 
         {/* Author */}
-        <div className="flex items-center gap-4 pt-4 border-t border-(--border-light)">
+        <div className="flex items-center gap-4 pt-4 border-t border-[var(--border-light)]">
           {avatar ? (
-            <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-(--brand-purple-subtle)">
+            <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-[var(--brand-purple-subtle)]">
               <Image
                 src={avatar}
                 alt={author}
@@ -60,15 +60,15 @@ const TestimonialCard = React.forwardRef<HTMLDivElement, TestimonialCardProps>(
               />
             </div>
           ) : (
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-(--brand-purple-light) to-(--brand-purple) flex items-center justify-center flex-shrink-0">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--brand-purple-light)] to-[var(--brand-purple)] flex items-center justify-center flex-shrink-0">
               <span className="text-lg font-urbanist font-bold text-white">
                 {author.charAt(0)}
               </span>
             </div>
           )}
           <div>
-            <p className="heading-xs text-(--text-primary)">{author}</p>
-            <p className="body-sm text-(--text-muted)">
+            <p className="heading-xs text-[var(--text-primary)]">{author}</p>
+            <p className="body-sm text-[var(--text-muted)]">
               {role && location ? `${role} • ${location}` : role || location}
             </p>
           </div>
