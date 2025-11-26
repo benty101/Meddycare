@@ -1,16 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { getUserFromToken } from '@/lib/auth';
+import { requireAuth } from '@/lib/api-auth';
 
 export async function GET(req: NextRequest) {
     try {
-        const authHeader = req.headers.get('authorization');
-        const token = authHeader?.replace('Bearer ', '');
-        const userData = await getUserFromToken(token);
-
-        if (!userData) {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-        }
+        const user = await requireAuth(req);
+        if (user instanceof NextResponse) return user; // Return error response
 
         const { searchParams } = new URL(req.url);
         const recipientId = searchParams.get('recipientId');
@@ -19,17 +14,17 @@ export async function GET(req: NextRequest) {
         let targetRecipientId = recipientId;
 
         if (!targetRecipientId) {
-            if (userData.role === 'family') {
+            if (user.role === 'family') {
                 const family = await prisma.family.findUnique({
-                    where: { userId: userData.userId },
+                    where: { userId: user.id },
                     include: { recipients: true }
                 });
                 if (family && family.recipients.length > 0) {
                     targetRecipientId = family.recipients[0].id;
                 }
-            } else if (userData.role === 'carer') {
+            } else if (user.role === 'carer') {
                 const carer = await prisma.carer.findUnique({
-                    where: { userId: userData.userId }
+                    where: { userId: user.id }
                 });
                 if (carer) {
                     const placement = await prisma.carePlacement.findFirst({

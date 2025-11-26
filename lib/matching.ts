@@ -45,43 +45,85 @@ export async function findMatches(careRequestId: string) {
         },
     });
 
-    // Score each carer
+    // Score each carer with enhanced algorithm
     const scoredCarers = carers.map((carer: any) => {
         let score = 0;
+        const weights = {
+            location: 35,
+            specialization: 30,
+            experience: 15,
+            rating: 15,
+            availability: 5,
+        };
 
-        // 1. LOCATION (40 points max) - closer is better
+        // 1. LOCATION (35 points max) - closer is better with diminishing returns
         const distance = calculateDistance(
             careRequest.family.lat?.toNumber() || 0,
             careRequest.family.lng?.toNumber() || 0,
             carer.lat?.toNumber() || 0,
             carer.lng?.toNumber() || 0
         );
-        score += Math.max(0, 40 - distance); // Lose 1pt per km
+        // Use logarithmic scale for distance scoring
+        const locationScore = distance === 0
+            ? weights.location
+            : Math.max(0, weights.location * (1 - Math.log10(distance + 1) / 2));
+        score += locationScore;
 
-        // 2. SPECIALIZATION MATCH (30 points max)
+        // 2. SPECIALIZATION MATCH (30 points max) - weighted by importance
         const carerSpecs = carer.specializations.map((s: any) => s.specialization);
         const matchingSpecs = requiredSpecs.filter(spec => carerSpecs.includes(spec));
+
+        // Perfect match bonus
         const specScore = requiredSpecs.length > 0
-            ? (matchingSpecs.length / requiredSpecs.length) * 30
-            : 15; // Default if no specific requirements
-        score += specScore;
+            ? (matchingSpecs.length / requiredSpecs.length) * weights.specialization
+            : weights.specialization * 0.5; // Half score if no specific requirements
 
-        // 3. EXPERIENCE (15 points max)
-        score += Math.min(carer.yearsExperience * 3, 15);
+        // Bonus for critical specializations (dementia, palliative)
+        const hasCriticalSpec = matchingSpecs.some(spec =>
+            ['dementia', 'palliative'].includes(spec)
+        );
+        score += specScore + (hasCriticalSpec ? 5 : 0);
 
-        // 4. RATING (15 points max)
+        // 3. EXPERIENCE (15 points max) - with diminishing returns
+        const experienceScore = Math.min(
+            weights.experience,
+            weights.experience * (1 - Math.exp(-carer.yearsExperience / 5))
+        );
+        score += experienceScore;
+
+        // 4. RATING (15 points max) - weighted by number of reviews
         if (carer.reviews.length > 0) {
             const avgRating = carer.reviews.reduce((sum: number, r: any) => sum + r.rating, 0) / carer.reviews.length;
-            score += (avgRating / 5) * 15;
+            const reviewConfidence = Math.min(1, carer.reviews.length / 10); // More reviews = higher confidence
+            score += (avgRating / 5) * weights.rating * (0.7 + 0.3 * reviewConfidence);
         } else {
-            score += 7.5; // Neutral score for no reviews
+            score += weights.rating * 0.5; // Neutral score for no reviews
         }
+
+        // 5. AVAILABILITY (5 points max) - check if schedule type matches
+        const scheduleMatch = careRequest.scheduleType === 'live_in' ||
+                            careRequest.scheduleType === 'visiting';
+        score += scheduleMatch ? weights.availability : 0;
+
+        // BONUS: Recent positive reviews (up to 3 bonus points)
+        const recentReviews = carer.reviews.filter((r: any) => {
+            const reviewDate = new Date(r.createdAt);
+            const monthsAgo = (Date.now() - reviewDate.getTime()) / (1000 * 60 * 60 * 24 * 30);
+            return monthsAgo <= 6 && r.rating >= 4;
+        });
+        score += Math.min(3, recentReviews.length * 0.5);
 
         return {
             carer,
-            score: Math.round(score),
+            score: Math.round(score * 10) / 10, // Round to 1 decimal
             distance: Math.round(distance),
             matchingSpecs,
+            breakdown: {
+                location: Math.round(locationScore),
+                specialization: Math.round(specScore),
+                experience: Math.round(experienceScore),
+                rating: Math.round((carer.reviews.length > 0 ? (carer.reviews.reduce((sum: number, r: any) => sum + r.rating, 0) / carer.reviews.length / 5) * weights.rating : weights.rating * 0.5)),
+            },
         };
     });
 

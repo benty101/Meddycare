@@ -50,6 +50,7 @@ export async function POST(req: NextRequest) {
                 email: user.email,
                 role: dbUser.role,
             },
+            token: session.access_token,  // Add token field for client compatibility
             session: {
                 access_token: session.access_token,
                 refresh_token: session.refresh_token,

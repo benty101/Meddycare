@@ -59,6 +59,7 @@ export default function Header() {
             <nav className="hidden md:flex items-center gap-8">
               {[
                 { name: 'About us', href: '/about' },
+                { name: 'Services', href: '/services' },
                 { name: 'For Families', href: '/get-care' },
                 { name: 'Carer', href: '/become-a-carer' },
                 { name: 'Insights & Advice', href: '/blog' },
@@ -130,6 +131,7 @@ export default function Header() {
               <nav className="space-y-2">
                 {[
                   { name: 'About us', href: '/about' },
+                { name: 'Services', href: '/services' },
                   { name: 'For Families', href: '/get-care' },
                   { name: 'Carer', href: '/become-a-carer' },
                   { name: 'Insights & Advice', href: '/blog' },

@@ -1,16 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { clearAuthCookie } from '@/lib/auth';
+import { signOut } from '@/lib/supabase-auth';
 
 export async function POST(req: NextRequest) {
     try {
+        // Sign out from Supabase (clears server-side session)
+        try {
+            await signOut();
+        } catch (error) {
+            // Ignore Supabase signout errors - client will clear localStorage anyway
+            console.log('Supabase signout error (non-critical):', error);
+        }
+
         // Create response
         const response = NextResponse.json({
             success: true,
             message: 'Logged out successfully',
         });
-
-        // Clear auth cookie
-        clearAuthCookie(response);
 
         return response;
 

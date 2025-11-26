@@ -1,10 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { getUserFromToken } from '@/lib/auth';
 
 /**
  * GET /api/articles
- * Get published articles with optional filters
+ * Get published articles with optional filters (public endpoint)
  */
 export async function GET(req: NextRequest) {
     try {

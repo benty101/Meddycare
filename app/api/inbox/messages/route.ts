@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { getUserFromToken } from '@/lib/auth';
+import { requireAuth } from '@/lib/api-auth';
 
 /**
  * POST /api/inbox/messages
@@ -8,13 +8,8 @@ import { getUserFromToken } from '@/lib/auth';
  */
 export async function POST(req: NextRequest) {
     try {
-        const authHeader = req.headers.get('authorization');
-        const token = authHeader?.replace('Bearer ', '');
-        const userData = await getUserFromToken(token);
-
-        if (!userData) {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-        }
+        const user = await requireAuth(req);
+        if (user instanceof NextResponse) return user; // Return error response
 
         const body = await req.json();
         const { recipientId, content, matchId } = body;
@@ -25,7 +20,7 @@ export async function POST(req: NextRequest) {
 
         // Fetch sender details
         const sender = await prisma.user.findUnique({
-            where: { id: userData.userId },
+            where: { id: user.id },
             select: { email: true }
         });
 
@@ -36,7 +31,7 @@ export async function POST(req: NextRequest) {
         // Create message
         const message = await prisma.message.create({
             data: {
-                senderId: userData.userId,
+                senderId: user.id,
                 recipientId,
                 content,
                 matchId, // Optional, links message to a specific match context

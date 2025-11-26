@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { getUserFromToken } from '@/lib/auth';
+import { requireAuth, requireRole } from '@/lib/api-auth';
 
 /**
  * GET /api/care-logs
@@ -8,20 +8,15 @@ import { getUserFromToken } from '@/lib/auth';
  */
 export async function GET(req: NextRequest) {
     try {
-        const authHeader = req.headers.get('authorization');
-        const token = authHeader?.replace('Bearer ', '');
-        const userData = await getUserFromToken(token);
-
-        if (!userData) {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-        }
+        const user = await requireAuth(req);
+        if (user instanceof NextResponse) return user; // Return error response
 
         let logs;
 
-        if (userData.role === 'family') {
+        if (user.role === 'family') {
             // Get family ID
             const family = await prisma.family.findUnique({
-                where: { userId: userData.userId }
+                where: { userId: user.id }
             });
 
             if (!family) {
@@ -44,10 +39,10 @@ export async function GET(req: NextRequest) {
                 take: 20 // Limit to recent logs
             });
 
-        } else if (userData.role === 'carer') {
+        } else if (user.role === 'carer') {
             // Get carer ID
             const carer = await prisma.carer.findUnique({
-                where: { userId: userData.userId }
+                where: { userId: user.id }
             });
 
             if (!carer) {
@@ -78,13 +73,8 @@ export async function GET(req: NextRequest) {
  */
 export async function POST(req: NextRequest) {
     try {
-        const authHeader = req.headers.get('authorization');
-        const token = authHeader?.replace('Bearer ', '');
-        const userData = await getUserFromToken(token);
-
-        if (!userData || userData.role !== 'carer') {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-        }
+        const user = await requireRole(req, ['carer']);
+        if (user instanceof NextResponse) return user; // Return error response
 
         const body = await req.json();
         const { placementId, activities, meals, medicationsGiven, mood, notes } = body;
@@ -95,7 +85,7 @@ export async function POST(req: NextRequest) {
 
         // Get carer ID
         const carer = await prisma.carer.findUnique({
-            where: { userId: userData.userId }
+            where: { userId: user.id }
         });
 
         if (!carer) {

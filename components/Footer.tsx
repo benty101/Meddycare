@@ -49,8 +49,8 @@ export default function Footer() {
                 { name: 'About Us', href: '/about' },
                 { name: 'For Families', href: '/get-care' },
                 { name: 'Become a Carer', href: '/become-a-carer' },
-                { name: 'Contact Us', href: '/contact' },
                 { name: 'Insights & Advice', href: '/blog' },
+                { name: 'Contact Us', href: '/contact' },
               ].map((item) => (
                 <li key={item.name}>
                   <Link

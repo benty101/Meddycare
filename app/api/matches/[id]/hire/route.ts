@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { getUserFromToken } from '@/lib/auth';
+import { requireRole } from '@/lib/api-auth';
 
 /**
  * POST /api/matches/[id]/hire
@@ -11,13 +11,8 @@ export async function POST(
     { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const authHeader = req.headers.get('authorization');
-        const token = authHeader?.replace('Bearer ', '');
-        const userData = await getUserFromToken(token);
-
-        if (!userData || userData.role !== 'family') {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-        }
+        const user = await requireRole(req, ['family']);
+        if (user instanceof NextResponse) return user; // Return error response
 
         const { id: matchId } = await params;
 
@@ -40,7 +35,7 @@ export async function POST(
 
         // Verify family owns the request
         const family = await prisma.family.findUnique({
-            where: { userId: userData.userId }
+            where: { userId: user.id }
         });
 
         if (!family || match.careRequest.familyId !== family.id) {

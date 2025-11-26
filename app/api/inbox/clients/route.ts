@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { getUserFromToken } from '@/lib/auth';
+import { requireAuth } from '@/lib/api-auth';
 
 /**
  * GET /api/inbox/clients
@@ -8,17 +8,12 @@ import { getUserFromToken } from '@/lib/auth';
  */
 export async function GET(req: NextRequest) {
     try {
-        const authHeader = req.headers.get('authorization');
-        const token = authHeader?.replace('Bearer ', '');
-        const userData = await getUserFromToken(token);
-
-        if (!userData) {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-        }
+        const user = await requireAuth(req);
+        if (user instanceof NextResponse) return user; // Return error response
 
         const messages = await prisma.message.findMany({
             where: {
-                recipientId: userData.userId,
+                recipientId: user.id,
                 messageType: 'user_message',
             },
             include: {

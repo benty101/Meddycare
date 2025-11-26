@@ -1,22 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { getUserFromToken } from '@/lib/auth';
+import { requireAuth, requireRole } from '@/lib/api-auth';
 
 export async function GET(req: NextRequest) {
     try {
-        const authHeader = req.headers.get('authorization');
-        const token = authHeader?.replace('Bearer ', '');
-        const userData = await getUserFromToken(token);
-
-        if (!userData) {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-        }
+        const user = await requireAuth(req);
+        if (user instanceof NextResponse) return user; // Return error response
 
         let placementId: string | undefined;
 
-        if (userData.role === 'carer') {
+        if (user.role === 'carer') {
             const carer = await prisma.carer.findUnique({
-                where: { userId: userData.userId }
+                where: { userId: user.id }
             });
             if (!carer) return NextResponse.json({ error: 'Carer not found' }, { status: 404 });
 
@@ -25,7 +20,7 @@ export async function GET(req: NextRequest) {
             });
             if (!placement) return NextResponse.json({ error: 'No active placement' }, { status: 404 });
             placementId = placement.id;
-        } else if (userData.role === 'family') {
+        } else if (user.role === 'family') {
             // Family logic if needed, but mostly for carer to log
             return NextResponse.json({ error: 'Family view not implemented yet' }, { status: 501 });
         }
@@ -52,16 +47,11 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
     try {
-        const authHeader = req.headers.get('authorization');
-        const token = authHeader?.replace('Bearer ', '');
-        const userData = await getUserFromToken(token);
-
-        if (!userData || userData.role !== 'carer') {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-        }
+        const user = await requireRole(req, ['carer']);
+        if (user instanceof NextResponse) return user; // Return error response
 
         const carer = await prisma.carer.findUnique({
-            where: { userId: userData.userId }
+            where: { userId: user.id }
         });
         if (!carer) return NextResponse.json({ error: 'Carer not found' }, { status: 404 });
 

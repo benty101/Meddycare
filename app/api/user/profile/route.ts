@@ -1,28 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { getUserFromToken } from '@/lib/auth';
+import { requireAuth } from '@/lib/api-auth';
 
 export async function GET(req: NextRequest) {
     try {
-        const authHeader = req.headers.get('authorization');
-        const token = authHeader?.replace('Bearer ', '');
-        const userData = await getUserFromToken(token);
-
-        if (!userData) {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-        }
+        const user = await requireAuth(req);
+        if (user instanceof NextResponse) return user; // Return error response
 
         let profile: any;
         let stats: any = {};
 
-        if (userData.role === 'family') {
+        if (user.role === 'family') {
             profile = await prisma.family.findUnique({
-                where: { userId: userData.userId },
+                where: { userId: user.id },
                 select: { firstName: true, lastName: true, phone: true }
             });
-        } else if (userData.role === 'carer') {
+        } else if (user.role === 'carer') {
             profile = await prisma.carer.findUnique({
-                where: { userId: userData.userId },
+                where: { userId: user.id },
                 include: {
                     reviews: {
                         select: { rating: true }
@@ -75,7 +70,9 @@ export async function GET(req: NextRequest) {
         }
 
         return NextResponse.json({
-            ...userData,
+            id: user.id,
+            email: user.email,
+            role: user.role,
             ...profile,
             stats
         });

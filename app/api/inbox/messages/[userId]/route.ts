@@ -1,27 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { getUserFromToken } from '@/lib/auth';
+import { requireAuth } from '@/lib/api-auth';
 
 export async function GET(
     req: NextRequest,
     { params }: { params: Promise<{ userId: string }> }
 ) {
     try {
-        const authHeader = req.headers.get('authorization');
-        const token = authHeader?.replace('Bearer ', '');
-        const userData = await getUserFromToken(token);
-
-        if (!userData) {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-        }
+        const user = await requireAuth(req);
+        if (user instanceof NextResponse) return user; // Return error response
 
         const { userId: otherUserId } = await params;
 
         const messages = await prisma.message.findMany({
             where: {
                 OR: [
-                    { senderId: userData.userId, recipientId: otherUserId },
-                    { senderId: otherUserId, recipientId: userData.userId }
+                    { senderId: user.id, recipientId: otherUserId },
+                    { senderId: otherUserId, recipientId: user.id }
                 ]
             },
             orderBy: {

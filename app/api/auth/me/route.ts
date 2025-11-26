@@ -1,22 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { getCurrentUser } from '@/lib/auth';
+import { requireAuth } from '@/lib/api-auth';
 
 export async function GET(req: NextRequest) {
     try {
-        // Get current user from cookie
-        const user = await getCurrentUser(req);
-
-        if (!user) {
-            return NextResponse.json(
-                { error: 'Unauthorized' },
-                { status: 401 }
-            );
-        }
+        const user = await requireAuth(req);
+        if (user instanceof NextResponse) return user; // Return error response
 
         // Get user with profile
         const userData = await prisma.user.findUnique({
-            where: { id: user.userId },
+            where: { id: user.id },
             include: {
                 family: true,
                 carer: {

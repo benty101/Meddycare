@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { getUserFromToken } from '@/lib/auth';
+import { getUserFromToken } from '@/lib/supabase-auth';
 import { findMatches } from '@/lib/matching';
 
 /**
@@ -12,15 +12,29 @@ export async function POST(req: NextRequest) {
         // Auth check
         const authHeader = req.headers.get('authorization');
         const token = authHeader?.replace('Bearer ', '');
-        const userData = await getUserFromToken(token);
 
-        if (!userData || userData.role !== 'family') {
+        if (!token) {
+            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+        }
+
+        const supabaseUser = await getUserFromToken(token);
+
+        if (!supabaseUser) {
+            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+        }
+
+        // Get user from database
+        const user = await prisma.user.findUnique({
+            where: { supabaseAuthId: supabaseUser.id },
+        });
+
+        if (!user || user.role !== 'family') {
             return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
         }
 
         // Get family
         const family = await prisma.family.findUnique({
-            where: { userId: userData.userId },
+            where: { userId: user.id },
         });
 
         if (!family) {
@@ -107,14 +121,28 @@ export async function GET(req: NextRequest) {
     try {
         const authHeader = req.headers.get('authorization');
         const token = authHeader?.replace('Bearer ', '');
-        const userData = await getUserFromToken(token);
 
-        if (!userData || userData.role !== 'family') {
+        if (!token) {
+            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+        }
+
+        const supabaseUser = await getUserFromToken(token);
+
+        if (!supabaseUser) {
+            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+        }
+
+        // Get user from database
+        const user = await prisma.user.findUnique({
+            where: { supabaseAuthId: supabaseUser.id },
+        });
+
+        if (!user || user.role !== 'family') {
             return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
         }
 
         const family = await prisma.family.findUnique({
-            where: { userId: userData.userId },
+            where: { userId: user.id },
         });
 
         if (!family) {

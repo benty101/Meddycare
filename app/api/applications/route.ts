@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { getUserFromToken } from '@/lib/auth';
+import { requireRole } from '@/lib/api-auth';
 
 /**
  * GET /api/applications
@@ -8,16 +8,11 @@ import { getUserFromToken } from '@/lib/auth';
  */
 export async function GET(req: NextRequest) {
     try {
-        const authHeader = req.headers.get('authorization');
-        const token = authHeader?.replace('Bearer ', '');
-        const userData = await getUserFromToken(token);
-
-        if (!userData || userData.role !== 'carer') {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-        }
+        const user = await requireRole(req, ['carer']);
+        if (user instanceof NextResponse) return user; // Return error response
 
         const carer = await prisma.carer.findUnique({
-            where: { userId: userData.userId },
+            where: { userId: user.id },
         });
 
         if (!carer) {
@@ -74,16 +69,11 @@ export async function GET(req: NextRequest) {
  */
 export async function POST(req: NextRequest) {
     try {
-        const authHeader = req.headers.get('authorization');
-        const token = authHeader?.replace('Bearer ', '');
-        const userData = await getUserFromToken(token);
-
-        if (!userData || userData.role !== 'carer') {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-        }
+        const user = await requireRole(req, ['carer']);
+        if (user instanceof NextResponse) return user; // Return error response
 
         const carer = await prisma.carer.findUnique({
-            where: { userId: userData.userId },
+            where: { userId: user.id },
         });
 
         if (!carer) {
